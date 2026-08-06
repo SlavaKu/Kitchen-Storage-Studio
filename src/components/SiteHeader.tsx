@@ -1,26 +1,171 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
+import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 import { primaryNavigation } from '@/data/navigation';
+import { cn } from '@/utils/cn';
 
 export function SiteHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsCompact(window.scrollY > 18);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('overflow-hidden', isMenuOpen);
+
+    return () => document.body.classList.remove('overflow-hidden');
+  }, [isMenuOpen]);
+
   return (
-    <header className="border-b border-border bg-surface/90">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <Link className="text-lg font-semibold text-foreground" to="/">
-          Kitchen Storage Studio
-        </Link>
-        <nav aria-label="Primary navigation">
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-muted">
+    <header
+      className={cn(
+        'sticky top-0 z-40 border-b border-border/75 bg-background/88 backdrop-blur-xl transition-all duration-medium',
+        isCompact ? 'shadow-soft' : 'shadow-none',
+      )}
+    >
+      <Container
+        className={cn(
+          'flex items-center justify-between gap-5 transition-all duration-medium',
+          isCompact ? 'py-3' : 'py-5',
+        )}
+      >
+        <NavLink
+          aria-label="Kitchen Storage Studio home"
+          className="group flex items-center gap-3"
+          to="/"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <span className="grid size-10 place-items-center rounded-full border border-walnut/20 bg-surface text-sm font-semibold text-walnut shadow-soft transition group-hover:-translate-y-0.5">
+            KS
+          </span>
+          <span className="leading-none">
+            <span className="block font-serif text-xl font-semibold text-foreground">
+              Kitchen & Storage
+            </span>
+            <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+              Studio
+            </span>
+          </span>
+        </NavLink>
+
+        <nav
+          className="hidden items-center gap-7 lg:flex"
+          aria-label="Primary navigation"
+        >
+          <ul className="flex items-center gap-7 text-sm font-semibold text-muted">
             {primaryNavigation.map((item) => (
               <li key={item.href}>
-                <Link className="transition hover:text-foreground" to={item.href}>
+                <NavLink
+                  className={({ isActive }) =>
+                    cn('nav-link', isActive && 'text-foreground after:scale-x-100')
+                  }
+                  to={item.href}
+                >
                   {item.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
         </nav>
-      </div>
+
+        <div className="hidden items-center gap-5 lg:flex">
+          <a className="text-sm font-semibold text-foreground" href="tel:+10000000000">
+            (000) 000-0000
+          </a>
+          <Button href="/contact" size="sm">
+            Get Free Design
+          </Button>
+        </div>
+
+        <button
+          aria-controls="mobile-navigation"
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          className="relative z-50 grid size-11 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:hidden"
+          type="button"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
+          <span className="grid w-5 gap-1.5">
+            <span
+              className={cn(
+                'h-px w-5 bg-current transition duration-medium',
+                isMenuOpen && 'translate-y-[7px] rotate-45',
+              )}
+            />
+            <span
+              className={cn(
+                'h-px w-5 bg-current transition duration-medium',
+                isMenuOpen && 'opacity-0',
+              )}
+            />
+            <span
+              className={cn(
+                'h-px w-5 bg-current transition duration-medium',
+                isMenuOpen && '-translate-y-[7px] -rotate-45',
+              )}
+            />
+          </span>
+        </button>
+      </Container>
+
+      <div
+        className={cn(
+          'fixed inset-0 top-0 z-30 bg-foreground/20 backdrop-blur-sm transition-opacity duration-medium lg:hidden',
+          isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
+        )}
+        onClick={() => setIsMenuOpen(false)}
+      />
+      <aside
+        aria-hidden={!isMenuOpen}
+        className={cn(
+          'fixed right-0 top-0 z-40 flex h-dvh w-full max-w-sm flex-col border-l border-border bg-background px-6 pb-8 pt-24 shadow-lift transition-transform duration-slow ease-refined lg:hidden',
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full',
+        )}
+        id="mobile-navigation"
+        inert={!isMenuOpen}
+      >
+        <nav aria-label="Mobile navigation">
+          <ul className="grid gap-1">
+            {primaryNavigation.map((item) => (
+              <li key={item.href}>
+                <NavLink
+                  className={({ isActive }) =>
+                    cn(
+                      'block rounded-soft px-4 py-4 font-serif text-2xl font-semibold text-foreground transition hover:bg-surfaceWarm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+                      isActive && 'bg-surfaceWarm',
+                    )
+                  }
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="mt-auto grid gap-4 border-t border-border pt-6">
+          <a className="font-semibold text-foreground" href="tel:+10000000000">
+            (000) 000-0000
+          </a>
+          <Button href="/contact" onClick={() => setIsMenuOpen(false)}>
+            Get Free Design
+          </Button>
+        </div>
+      </aside>
     </header>
   );
 }

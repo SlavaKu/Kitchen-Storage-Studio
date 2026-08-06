@@ -9,15 +9,36 @@ export default {
         foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
         muted: 'rgb(var(--color-muted) / <alpha-value>)',
         surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        surfaceWarm: 'rgb(var(--color-surface-warm) / <alpha-value>)',
         border: 'rgb(var(--color-border) / <alpha-value>)',
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        primaryDark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        walnut: 'rgb(var(--color-walnut) / <alpha-value>)',
+        walnutDark: 'rgb(var(--color-walnut-dark) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
       },
       boxShadow: {
-        soft: '0 18px 45px rgb(15 23 42 / 0.08)',
+        soft: 'var(--shadow-soft)',
+        lift: 'var(--shadow-lift)',
+      },
+      transitionDuration: {
+        medium: 'var(--duration-medium)',
+        slow: 'var(--duration-slow)',
+        hero: 'var(--duration-hero)',
+      },
+      transitionTimingFunction: {
+        refined: 'var(--ease-refined)',
+      },
+      borderRadius: {
+        soft: 'var(--radius-soft)',
+        panel: 'var(--radius-panel)',
+      },
+      maxWidth: {
+        container: 'var(--container-max)',
       },
     },
   },
