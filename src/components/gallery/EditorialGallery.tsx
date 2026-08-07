@@ -22,8 +22,12 @@ export function EditorialGallery({
   title,
 }: EditorialGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const pointerStartX = useRef<number | null>(null);
+  const pointerStartY = useRef<number | null>(null);
   const touchStartX = useRef<number | null>(null);
   const activeGroup = groups[activeIndex];
+  const activeImages = activeGroup.images;
 
   const galleryId = useMemo(
     () => `${eyebrow.toLowerCase().replace(/\s+/g, '-')}-gallery`,
@@ -31,11 +35,13 @@ export function EditorialGallery({
   );
 
   const showPrevious = () => {
-    setActiveIndex((current) => (current - 1 + groups.length) % groups.length);
+    setActiveImageIndex(
+      (current) => (current - 1 + activeImages.length) % activeImages.length,
+    );
   };
 
   const showNext = () => {
-    setActiveIndex((current) => (current + 1) % groups.length);
+    setActiveImageIndex((current) => (current + 1) % activeImages.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -70,6 +76,42 @@ export function EditorialGallery({
     showNext();
   };
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) {
+      return;
+    }
+
+    pointerStartX.current = event.clientX;
+    pointerStartY.current = event.clientY;
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (pointerStartX.current === null || pointerStartY.current === null) {
+      return;
+    }
+
+    const deltaX = event.clientX - pointerStartX.current;
+    const deltaY = event.clientY - pointerStartY.current;
+    pointerStartX.current = null;
+    pointerStartY.current = null;
+
+    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) < Math.abs(deltaY)) {
+      return;
+    }
+
+    if (deltaX > 0) {
+      showPrevious();
+      return;
+    }
+
+    showNext();
+  };
+
+  const handlePointerCancel = () => {
+    pointerStartX.current = null;
+    pointerStartY.current = null;
+  };
+
   return (
     <section
       className="bg-background py-20 sm:py-28"
@@ -97,7 +139,7 @@ export function EditorialGallery({
 
           <div className="flex items-center gap-3">
             <button
-              aria-label={`Previous ${eyebrow} gallery group`}
+              aria-label={`Previous ${eyebrow} gallery image`}
               className="grid size-12 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-walnut/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               type="button"
               onClick={showPrevious}
@@ -105,7 +147,7 @@ export function EditorialGallery({
               <LineIcon name="arrowLeft" />
             </button>
             <button
-              aria-label={`Next ${eyebrow} gallery group`}
+              aria-label={`Next ${eyebrow} gallery image`}
               className="grid size-12 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-walnut/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               type="button"
               onClick={showNext}
@@ -115,51 +157,101 @@ export function EditorialGallery({
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:gap-5">
-          {activeGroup.images.map((image, index) => (
-            <Reveal
-              className={cn(
-                'gallery-tile group overflow-hidden rounded-panel border border-white/70 bg-surface shadow-soft',
-                index === 0 && 'min-h-[420px] lg:row-span-2 lg:min-h-[650px]',
-                index !== 0 && 'min-h-[230px]',
-              )}
-              delay={
-                index === 0 ? 'none' : index === 1 ? 'sm' : index === 2 ? 'md' : 'lg'
-              }
-              key={`${activeGroup.label}-${image.imageUrl}`}
-            >
-              <img
-                alt={image.alt}
-                className="h-full min-h-[inherit] w-full object-cover transition duration-slow ease-refined group-hover:scale-[1.025]"
-                decoding="async"
-                loading="lazy"
-                src={image.imageUrl}
-                style={{ objectPosition: image.position ?? 'center' }}
-              />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="mt-12">
+          <div
+            className="coverflow"
+            aria-live="polite"
+            onPointerCancel={handlePointerCancel}
+            onPointerDown={handlePointerDown}
+            onPointerLeave={handlePointerCancel}
+            onPointerUp={handlePointerUp}
+          >
+            {activeImages.map((image, index) => {
+              const offset =
+                (index - activeImageIndex + activeImages.length) % activeImages.length;
+              const signedOffset =
+                offset > activeImages.length / 2 ? offset - activeImages.length : offset;
+              const isActive = signedOffset === 0;
+              const isVisible = Math.abs(signedOffset) <= 2;
+
+              return (
+                <button
+                  aria-label={`Show ${image.alt}`}
+                  className={cn(
+                    'coverflow-item group',
+                    isActive && 'is-active',
+                    !isVisible && 'is-hidden',
+                  )}
+                  key={`${activeGroup.label}-${image.imageUrl}`}
+                  style={
+                    {
+                      '--coverflow-offset': signedOffset,
+                      '--coverflow-depth': Math.abs(signedOffset),
+                      zIndex: isActive ? 4 : 3 - Math.abs(signedOffset),
+                    } as React.CSSProperties
+                  }
+                  type="button"
+                  onClick={() => setActiveImageIndex(index)}
+                >
+                  <img
+                    alt={image.alt}
+                    className="h-full w-full object-cover"
+                    decoding="async"
+                    loading={isActive ? 'eager' : 'lazy'}
+                    src={image.imageUrl}
+                    style={{ objectPosition: image.position ?? 'center' }}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
 
         <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div
-            className="flex gap-2"
-            role="tablist"
-            aria-label={`${eyebrow} gallery groups`}
-          >
-            {groups.map((group, index) => (
-              <button
-                aria-label={`Show ${group.label}`}
-                aria-selected={activeIndex === index}
-                className={cn(
-                  'h-1.5 w-12 rounded-full transition duration-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-                  activeIndex === index ? 'bg-walnut' : 'bg-border hover:bg-primary/45',
-                )}
-                key={group.label}
-                role="tab"
-                type="button"
-                onClick={() => setActiveIndex(index)}
-              />
-            ))}
+          <div className="grid gap-4">
+            <div
+              className="flex gap-2"
+              role="tablist"
+              aria-label={`${eyebrow} gallery groups`}
+            >
+              {groups.map((group, index) => (
+                <button
+                  aria-label={`Show ${group.label}`}
+                  aria-selected={activeIndex === index}
+                  className={cn(
+                    'h-1.5 w-12 rounded-full transition duration-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
+                    activeIndex === index ? 'bg-walnut' : 'bg-border hover:bg-primary/45',
+                  )}
+                  key={group.label}
+                  role="tab"
+                  type="button"
+                  onClick={() => {
+                    setActiveIndex(index);
+                    setActiveImageIndex(0);
+                  }}
+                />
+              ))}
+            </div>
+            <div
+              className="flex gap-2"
+              aria-label={`${eyebrow} image progress`}
+              role="group"
+            >
+              {activeImages.map((image, index) => (
+                <button
+                  aria-label={`Show gallery image ${index + 1}`}
+                  className={cn(
+                    'size-2 rounded-full transition duration-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
+                    activeImageIndex === index
+                      ? 'bg-walnut'
+                      : 'bg-border hover:bg-primary/45',
+                  )}
+                  key={image.imageUrl}
+                  type="button"
+                  onClick={() => setActiveImageIndex(index)}
+                />
+              ))}
+            </div>
           </div>
           {ctaHref && ctaLabel ? (
             <Button href={ctaHref} variant="secondary">

@@ -19,99 +19,93 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="overflow-hidden bg-background">
-      <Container className="grid min-h-[calc(100svh-82px)] items-center gap-12 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
-        <div className="max-w-xl">
-          <p className="text-sm font-semibold uppercase leading-7 tracking-[0.22em] text-primary">
+    <section className="hero-full relative isolate min-h-[calc(100svh-82px)] overflow-hidden bg-foreground text-white">
+      {heroSlides.map((slide, index) => (
+        <figure
+          aria-hidden={activeSlide !== index}
+          className={cn(
+            'absolute inset-0 transition-opacity duration-hero ease-refined',
+            activeSlide === index ? 'opacity-100' : 'opacity-0',
+          )}
+          key={slide.imageUrl}
+        >
+          <img
+            alt={slide.eyebrow}
+            className={cn(
+              'hero-image h-full w-full object-cover',
+              activeSlide === index && 'is-active',
+            )}
+            decoding={index === 0 ? 'sync' : 'async'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            src={slide.imageUrl}
+            style={{ objectPosition: slide.position }}
+          />
+        </figure>
+      ))}
+
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(29_19_14/0.76)_0%,rgb(45_31_24/0.58)_34%,rgb(45_31_24/0.18)_63%,rgb(45_31_24/0.06)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(29_19_14/0.18)_0%,transparent_35%,rgb(29_19_14/0.30)_100%)]" />
+
+      <Container className="relative z-10 flex min-h-[calc(100svh-82px)] items-center py-16 sm:py-20">
+        <div className="max-w-3xl py-12">
+          <p className="text-sm font-semibold uppercase leading-7 tracking-[0.26em] text-white/78">
             BEAUTIFUL.
             <br />
             FUNCTIONAL.
             <br />
             AFFORDABLE.
           </p>
-          <h1 className="mt-7 font-serif text-5xl font-semibold leading-[0.96] text-foreground sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 max-w-3xl font-serif text-5xl font-semibold leading-[0.92] text-white sm:text-7xl lg:text-8xl">
             Smart Spaces.
             <br />
             Better Living.
           </h1>
-          <p className="mt-7 max-w-lg text-lg leading-8 text-muted">
+          <p className="mt-7 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
             Premium cabinetry and storage planning for kitchens, closets, garages, and
             refined everyday spaces.
           </p>
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button href="/contact" size="lg">
               Get Free Design
             </Button>
-            <Button href="/projects" size="lg" variant="secondary">
+            <Button
+              className="border-white/35 bg-white/12 text-white backdrop-blur-md hover:border-white/55 hover:bg-white/18"
+              href="/projects"
+              size="lg"
+              variant="secondary"
+            >
               View Projects
             </Button>
           </div>
         </div>
-
-        <div className="hero-media relative min-h-[430px] overflow-hidden rounded-panel border border-white/70 bg-surface shadow-lift sm:min-h-[540px] lg:min-h-[690px]">
-          {heroSlides.map((slide, index) => (
-            <figure
-              aria-hidden={activeSlide !== index}
-              className={cn(
-                'absolute inset-0 transition-opacity duration-hero ease-refined',
-                activeSlide === index ? 'opacity-100' : 'opacity-0',
-              )}
-              key={slide.imageUrl}
-            >
-              <img
-                alt={slide.eyebrow}
-                className={cn(
-                  'hero-image h-full w-full object-cover',
-                  activeSlide === index && 'is-active',
-                )}
-                decoding={index === 0 ? 'sync' : 'async'}
-                fetchPriority={index === 0 ? 'high' : 'auto'}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                src={slide.imageUrl}
-                style={{ objectPosition: slide.position }}
-              />
-              <div className="absolute inset-0" style={{ background: slide.overlay }} />
-            </figure>
-          ))}
-
-          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-            <div className="max-w-md rounded-soft border border-white/30 bg-foreground/20 p-5 text-white shadow-soft backdrop-blur-md">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
-                {heroSlides[activeSlide].eyebrow}
-              </p>
-              <p className="mt-2 font-serif text-2xl font-semibold leading-tight">
-                {heroSlides[activeSlide].title}
-              </p>
-            </div>
-
-            <div
-              aria-label="Hero image progress"
-              className="mt-5 grid grid-cols-4 gap-3"
-              role="group"
-            >
-              {heroSlides.map((slide, index) => (
-                <button
-                  aria-label={`Show ${slide.eyebrow}`}
-                  className="group h-7 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                  key={slide.eyebrow}
-                  type="button"
-                  onClick={() => setActiveSlide(index)}
-                >
-                  <span className="block h-px overflow-hidden rounded-full bg-white/35">
-                    <span
-                      className={cn(
-                        'block h-full origin-left bg-white',
-                        activeSlide === index && 'hero-progress',
-                        activeSlide > index && 'scale-x-100',
-                      )}
-                    />
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
       </Container>
+
+      <div
+        aria-label="Hero image progress"
+        className="absolute inset-x-0 bottom-7 z-10 mx-auto grid w-[min(560px,calc(100%-40px))] grid-cols-4 gap-3"
+        role="group"
+      >
+        {heroSlides.map((slide, index) => (
+          <button
+            aria-label={`Show ${slide.eyebrow}`}
+            className="group h-7 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            key={slide.eyebrow}
+            type="button"
+            onClick={() => setActiveSlide(index)}
+          >
+            <span className="block h-px overflow-hidden rounded-full bg-white/35">
+              <span
+                className={cn(
+                  'block h-full origin-left bg-white',
+                  activeSlide === index && 'hero-progress',
+                  activeSlide > index && 'scale-x-100',
+                )}
+              />
+            </span>
+          </button>
+        ))}
+      </div>
     </section>
   );
 }

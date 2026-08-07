@@ -7,8 +7,8 @@ type StoryImageSectionProps = {
 
 export function StoryImageSection({ story }: StoryImageSectionProps) {
   return (
-    <section className="story-section relative min-h-[92vh] bg-background" id={story.id}>
-      <div className="story-sticky sticky top-[76px] h-[76vh] min-h-[520px] overflow-hidden sm:h-[82vh]">
+    <section className="story-section relative min-h-[118vh] bg-background" id={story.id}>
+      <div className="story-sticky sticky top-[72px] h-[78vh] min-h-[520px] overflow-hidden sm:h-[84vh]">
         <img
           alt={story.alt}
           className="story-image h-full w-full object-cover"
