@@ -190,10 +190,17 @@ select {
 
   .story-section {
     margin-top: -1px;
+    margin-bottom: -115vh;
+    isolation: isolate;
   }
 
   .story-sticky {
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2);
+  }
+
+  .story-section + section {
+    position: relative;
+    z-index: 1;
   }
 
   .story-image {
@@ -315,14 +322,13 @@ select {
 
 @media (max-width: 767px) {
   .story-section {
-    min-height: auto;
+    height: 220vh;
+    margin-bottom: -105vh;
   }
 
   .story-sticky {
-    position: relative;
-    top: auto;
-    height: 74vh;
-    min-height: 500px;
+    top: 72px;
+    height: calc(100svh - 72px);
   }
 
   .coverflow {
