@@ -21,13 +21,23 @@ export function EditorialGallery({
   groups,
   title,
 }: EditorialGalleryProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const pointerStartX = useRef<number | null>(null);
   const pointerStartY = useRef<number | null>(null);
-  const touchStartX = useRef<number | null>(null);
-  const activeGroup = groups[activeIndex];
-  const activeImages = activeGroup.images;
+
+  const slides = useMemo(
+    () =>
+      groups.flatMap((group) =>
+        group.images.map((image) => ({
+          ...image,
+          groupLabel: group.label,
+          groupTitle: group.title,
+        })),
+      ),
+    [groups],
+  );
+
+  const activeSlide = slides[activeImageIndex];
 
   const galleryId = useMemo(
     () => `${eyebrow.toLowerCase().replace(/\s+/g, '-')}-gallery`,
@@ -35,13 +45,11 @@ export function EditorialGallery({
   );
 
   const showPrevious = () => {
-    setActiveImageIndex(
-      (current) => (current - 1 + activeImages.length) % activeImages.length,
-    );
+    setActiveImageIndex((current) => (current - 1 + slides.length) % slides.length);
   };
 
   const showNext = () => {
-    setActiveImageIndex((current) => (current + 1) % activeImages.length);
+    setActiveImageIndex((current) => (current + 1) % slides.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -54,26 +62,6 @@ export function EditorialGallery({
       event.preventDefault();
       showNext();
     }
-  };
-
-  const handleTouchEnd = (event: React.TouchEvent<HTMLElement>) => {
-    if (touchStartX.current === null) {
-      return;
-    }
-
-    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
-    touchStartX.current = null;
-
-    if (Math.abs(deltaX) < 44) {
-      return;
-    }
-
-    if (deltaX > 0) {
-      showPrevious();
-      return;
-    }
-
-    showNext();
   };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -118,10 +106,6 @@ export function EditorialGallery({
       id={galleryId}
       tabIndex={-1}
       onKeyDown={handleKeyDown}
-      onTouchEnd={handleTouchEnd}
-      onTouchStart={(event) => {
-        touchStartX.current = event.touches[0].clientX;
-      }}
     >
       <div className="mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8">
         <Reveal className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
@@ -133,46 +117,36 @@ export function EditorialGallery({
               {title}
             </h2>
             <p className="mt-4 max-w-xl text-base leading-8 text-muted">
-              {activeGroup.title}
+              {activeSlide.groupTitle}
             </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              aria-label={`Previous ${eyebrow} gallery image`}
-              className="grid size-12 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-walnut/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-              type="button"
-              onClick={showPrevious}
-            >
-              <LineIcon name="arrowLeft" />
-            </button>
-            <button
-              aria-label={`Next ${eyebrow} gallery image`}
-              className="grid size-12 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 hover:border-walnut/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-              type="button"
-              onClick={showNext}
-            >
-              <LineIcon name="arrowRight" />
-            </button>
           </div>
         </Reveal>
 
-        <Reveal className="mt-12">
+        <Reveal className="mt-10">
           <div
             className="coverflow"
             aria-live="polite"
+            aria-roledescription="carousel"
             onPointerCancel={handlePointerCancel}
             onPointerDown={handlePointerDown}
             onPointerLeave={handlePointerCancel}
             onPointerUp={handlePointerUp}
           >
-            {activeImages.map((image, index) => {
-              const offset =
-                (index - activeImageIndex + activeImages.length) % activeImages.length;
+            <button
+              aria-label="Previous image"
+              className="coverflow-arrow coverflow-arrow-left"
+              type="button"
+              onClick={showPrevious}
+            >
+              <LineIcon name="arrowLeft" />
+            </button>
+
+            {slides.map((image, index) => {
+              const offset = (index - activeImageIndex + slides.length) % slides.length;
               const signedOffset =
-                offset > activeImages.length / 2 ? offset - activeImages.length : offset;
+                offset > slides.length / 2 ? offset - slides.length : offset;
               const isActive = signedOffset === 0;
-              const isVisible = Math.abs(signedOffset) <= 2;
+              const isVisible = Math.abs(signedOffset) <= 1;
 
               return (
                 <button
@@ -182,16 +156,20 @@ export function EditorialGallery({
                     isActive && 'is-active',
                     !isVisible && 'is-hidden',
                   )}
-                  key={`${activeGroup.label}-${image.imageUrl}`}
+                  key={`${image.groupLabel}-${image.imageUrl}`}
                   style={
                     {
                       '--coverflow-offset': signedOffset,
                       '--coverflow-depth': Math.abs(signedOffset),
-                      zIndex: isActive ? 4 : 3 - Math.abs(signedOffset),
+                      zIndex: isActive ? 3 : 2,
                     } as React.CSSProperties
                   }
                   type="button"
-                  onClick={() => setActiveImageIndex(index)}
+                  onClick={() => {
+                    if (!isActive && isVisible) {
+                      setActiveImageIndex(index);
+                    }
+                  }}
                 >
                   <img
                     alt={image.alt}
@@ -204,54 +182,24 @@ export function EditorialGallery({
                 </button>
               );
             })}
+
+            <button
+              aria-label="Next image"
+              className="coverflow-arrow coverflow-arrow-right"
+              type="button"
+              onClick={showNext}
+            >
+              <LineIcon name="arrowRight" />
+            </button>
           </div>
         </Reveal>
 
-        <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="grid gap-4">
-            <div
-              className="flex gap-2"
-              role="tablist"
-              aria-label={`${eyebrow} gallery groups`}
-            >
-              {groups.map((group, index) => (
-                <button
-                  aria-label={`Show ${group.label}`}
-                  aria-selected={activeIndex === index}
-                  className={cn(
-                    'h-1.5 w-12 rounded-full transition duration-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-                    activeIndex === index ? 'bg-walnut' : 'bg-border hover:bg-primary/45',
-                  )}
-                  key={group.label}
-                  role="tab"
-                  type="button"
-                  onClick={() => {
-                    setActiveIndex(index);
-                    setActiveImageIndex(0);
-                  }}
-                />
-              ))}
-            </div>
-            <div
-              className="flex gap-2"
-              aria-label={`${eyebrow} image progress`}
-              role="group"
-            >
-              {activeImages.map((image, index) => (
-                <button
-                  aria-label={`Show gallery image ${index + 1}`}
-                  className={cn(
-                    'size-2 rounded-full transition duration-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-                    activeImageIndex === index
-                      ? 'bg-walnut'
-                      : 'bg-border hover:bg-primary/45',
-                  )}
-                  key={image.imageUrl}
-                  type="button"
-                  onClick={() => setActiveImageIndex(index)}
-                />
-              ))}
-            </div>
+        <div className="mt-6 flex flex-col gap-5 text-center sm:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              {activeSlide.groupLabel}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted">{activeSlide.alt}</p>
           </div>
           {ctaHref && ctaLabel ? (
             <Button href={ctaHref} variant="secondary">

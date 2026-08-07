@@ -217,12 +217,13 @@ select {
 
   .coverflow {
     position: relative;
-    height: clamp(420px, 58vw, 680px);
+    height: clamp(320px, 40vw, 540px);
+    max-width: 1180px;
+    margin-inline: auto;
     overflow: clip;
     cursor: grab;
     touch-action: pan-y;
     user-select: none;
-    border-radius: var(--radius-panel);
   }
 
   .coverflow:active {
@@ -231,43 +232,47 @@ select {
 
   .coverflow::before {
     position: absolute;
-    inset: auto 8% 0;
-    height: 26%;
+    inset: auto 18% 2%;
+    height: 18%;
     pointer-events: none;
     content: '';
-    background: radial-gradient(ellipse, rgb(53 38 31 / 0.16), transparent 68%);
-    filter: blur(18px);
+    background: radial-gradient(ellipse, rgb(53 38 31 / 0.12), transparent 70%);
+    filter: blur(20px);
   }
 
   .coverflow-item {
     position: absolute;
-    top: 5%;
+    top: 50%;
     left: 50%;
-    width: min(72%, 860px);
-    height: 90%;
+    width: min(62%, 860px);
+    aspect-ratio: 16 / 10;
+    max-height: 100%;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgb(255 255 255 / 0.72);
-    border-radius: var(--radius-panel);
-    box-shadow: var(--shadow-soft);
-    opacity: calc(1 - (var(--coverflow-depth) * 0.22));
-    transform: translateX(calc(-50% + (var(--coverflow-offset) * 34%)))
-      translateY(calc(var(--coverflow-depth) * 18px))
-      rotate(calc(var(--coverflow-offset) * -2.4deg))
-      scale(calc(1 - (var(--coverflow-depth) * 0.105)));
+    border: 1px solid rgb(255 255 255 / 0.68);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgb(53 38 31 / 0.14);
+    opacity: calc(1 - (var(--coverflow-depth) * 0.42));
+    transform: translateX(calc(-50% + (var(--coverflow-offset) * 105%)))
+      translateY(calc(-50% + (var(--coverflow-depth) * 10px)))
+      rotate(calc(var(--coverflow-offset) * 1.6deg))
+      scale(calc(1 - (var(--coverflow-depth) * 0.16)));
     transition:
-      opacity var(--duration-slow) var(--ease-refined),
-      transform var(--duration-slow) var(--ease-refined),
-      box-shadow var(--duration-slow) var(--ease-refined);
+      opacity 680ms var(--ease-refined),
+      transform 680ms var(--ease-refined),
+      box-shadow 680ms var(--ease-refined);
   }
 
   .coverflow-item img {
-    transition: transform var(--duration-slow) var(--ease-refined);
+    height: 100%;
+    width: 100%;
+    transition: transform 680ms var(--ease-refined);
   }
 
   .coverflow-item.is-active {
     z-index: 4;
-    box-shadow: var(--shadow-lift);
+    cursor: default;
+    box-shadow: 0 28px 70px rgb(53 38 31 / 0.18);
   }
 
   .coverflow-item:not(.is-active) {
@@ -278,8 +283,8 @@ select {
     position: absolute;
     inset: 0;
     content: '';
-    background: rgb(53 38 31 / 0.2);
-    transition: background var(--duration-slow) var(--ease-refined);
+    background: rgb(53 38 31 / 0.24);
+    transition: background 680ms var(--ease-refined);
   }
 
   .coverflow-item:not(.is-active):hover::after {
@@ -293,6 +298,47 @@ select {
   .coverflow-item.is-hidden {
     pointer-events: none;
     opacity: 0;
+  }
+
+  .coverflow-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    color: rgb(var(--color-walnut));
+    background: rgb(255 252 246 / 0.78);
+    border: 1px solid rgb(255 255 255 / 0.76);
+    border-radius: 999px;
+    box-shadow: 0 14px 34px rgb(53 38 31 / 0.16);
+    transform: translateY(-50%);
+    backdrop-filter: blur(14px);
+    transition:
+      background var(--duration-medium) var(--ease-refined),
+      box-shadow var(--duration-medium) var(--ease-refined),
+      transform var(--duration-medium) var(--ease-refined);
+  }
+
+  .coverflow-arrow:hover,
+  .coverflow-arrow:focus-visible {
+    background: rgb(255 252 246 / 0.9);
+    box-shadow: 0 18px 38px rgb(53 38 31 / 0.18);
+    transform: translateY(-50%) scale(1.035);
+  }
+
+  .coverflow-arrow:focus-visible {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 4px;
+  }
+
+  .coverflow-arrow-left {
+    left: calc(50% - min(31%, 430px) - 22px);
+  }
+
+  .coverflow-arrow-right {
+    right: calc(50% - min(31%, 430px) - 22px);
   }
 }
 
@@ -332,18 +378,30 @@ select {
   }
 
   .coverflow {
-    height: 440px;
+    height: 310px;
     margin-inline: -1rem;
   }
 
   .coverflow-item {
-    top: 8%;
-    width: 78%;
-    height: 84%;
-    transform: translateX(calc(-50% + (var(--coverflow-offset) * 52%)))
-      translateY(calc(var(--coverflow-depth) * 16px))
-      rotate(calc(var(--coverflow-offset) * -1.8deg))
-      scale(calc(1 - (var(--coverflow-depth) * 0.12)));
+    width: 86%;
+    border-radius: 14px;
+    transform: translateX(calc(-50% + (var(--coverflow-offset) * 98%)))
+      translateY(calc(-50% + (var(--coverflow-depth) * 8px)))
+      rotate(calc(var(--coverflow-offset) * 1.2deg))
+      scale(calc(1 - (var(--coverflow-depth) * 0.14)));
+  }
+
+  .coverflow-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .coverflow-arrow-left {
+    left: 18px;
+  }
+
+  .coverflow-arrow-right {
+    right: 18px;
   }
 }
 
@@ -364,8 +422,6 @@ select {
 
   .story-image,
   .story-section:hover .story-image,
-  .coverflow-item,
-  .coverflow-item img,
   .wood-button::before {
     transform: none;
   }
