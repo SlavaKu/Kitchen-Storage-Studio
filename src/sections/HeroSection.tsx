@@ -57,25 +57,25 @@ export function HeroSection() {
             AFFORDABLE.
           </p>
           <h1 className="mt-8 max-w-3xl font-serif text-5xl font-semibold leading-[0.92] text-white sm:text-7xl lg:text-8xl">
-            Smart Spaces.
+            Kitchen Cabinets.
             <br />
-            Better Living.
+            Better Planning.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
-            Premium cabinetry and storage planning for kitchens, closets, garages, and
-            refined everyday spaces.
+            Premium kitchen cabinet design and installation with practical layouts,
+            realistic pricing, and a free design to help you begin.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button href="/contact" size="lg">
+            <Button href="/#contact" size="lg">
               Get Free Design
             </Button>
             <Button
               className="border-white/35 bg-white/12 text-white backdrop-blur-md hover:border-white/55 hover:bg-white/18"
-              href="/projects"
+              href="/#kitchen-inspiration-gallery"
               size="lg"
               variant="secondary"
             >
-              View Projects
+              View Kitchens
             </Button>
           </div>
         </div>

@@ -59,61 +59,91 @@ export type FaqItem = {
   answer: string;
 };
 
+export type SocialLink = {
+  label: string;
+  href: string;
+};
+
+export const contactDetails = {
+  phoneLabel: '(000) 000-0000',
+  phoneHref: 'tel:+10000000000',
+  emailLabel: 'hello@example.com',
+  emailHref: 'mailto:hello@example.com',
+};
+
+export const socialLinks: SocialLink[] = [
+  { label: 'Facebook', href: '#' },
+  { label: 'Instagram', href: '#' },
+  { label: 'TikTok', href: '#' },
+  { label: 'Yelp', href: '#' },
+];
+
 export const benefits: Benefit[] = [
   {
     icon: 'cube',
-    title: 'Free 3D Design',
-    summary: 'See your space before you buy',
+    title: 'Free Kitchen Design',
+    summary: 'A simple visual plan before you decide.',
   },
   {
     icon: 'wallet',
-    title: 'Affordable Price',
-    summary: 'Quality solutions at the right price',
+    title: 'Affordable Choices',
+    summary: 'Clean cabinet options without inflated showroom pricing.',
+  },
+  {
+    icon: 'measure',
+    title: 'Measured Planning',
+    summary: 'Layouts shaped around your kitchen dimensions.',
   },
   {
     icon: 'tools',
     title: 'Professional Install',
-    summary: 'Fast, clean and reliable service',
-  },
-  {
-    icon: 'map',
-    title: 'Local in Bay Area',
-    summary: 'Proudly serving the Bay Area',
+    summary: 'Cabinets delivered and installed with a clean process.',
   },
 ];
 
 export const stories: Story[] = [
   {
-    id: 'kitchen-story',
-    eyebrow: 'Kitchens',
-    title: 'Designed around your space. Built around your budget.',
-    cta: 'Explore Kitchens',
-    href: '/kitchens',
+    id: 'kitchen-design-story',
+    eyebrow: 'Kitchen Design',
+    title: 'A kitchen planned around your layout, budget, and daily routine.',
+    cta: 'Start Free Design',
+    href: '/#contact',
     imageUrl:
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Bright white apartment kitchen with simple cabinets and natural light',
+    alt: 'Bright white kitchen with simple cabinets and natural light',
     position: 'center',
   },
   {
-    id: 'closet-story',
-    eyebrow: 'Closets',
-    title: 'More storage. Less clutter.',
-    cta: 'Explore Closets',
-    href: '/closets',
+    id: 'kitchen-process-story',
+    eyebrow: 'Kitchen Process',
+    title: 'Clear steps from first photos to finished kitchen cabinets.',
+    cta: 'See How It Works',
+    href: '/#how-it-works',
     imageUrl:
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Organized residential closet with shelves, hanging areas and drawers',
+      'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1800&q=82',
+    alt: 'Light kitchen with white cabinets and a compact island',
     position: 'center',
   },
   {
-    id: 'garage-story',
-    eyebrow: 'Garage Storage',
-    title: 'Everything has a place.',
-    cta: 'Explore Garage Storage',
-    href: '/garage-storage',
+    id: 'kitchen-style-story',
+    eyebrow: 'Kitchen Styles',
+    title: 'Choose a kitchen look that feels polished and easy to live with.',
+    cta: 'View Styles',
+    href: '/#kitchen-styles',
     imageUrl:
-      'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Clean residential garage with practical storage and cabinets',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=82',
+    alt: 'Two tone kitchen with island and bright counters',
+    position: 'center',
+  },
+  {
+    id: 'kitchen-contact-story',
+    eyebrow: 'Free Kitchen Design',
+    title: 'Send a few details and start with a kitchen plan you can understand.',
+    cta: 'Open Form',
+    href: '/#contact',
+    imageUrl:
+      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=82',
+    alt: 'White kitchen cabinets with a clean countertop',
     position: 'center',
   },
 ];
@@ -121,121 +151,45 @@ export const stories: Story[] = [
 export const serviceSections: ServiceSection[] = [
   {
     id: 'kitchens',
-    eyebrow: 'Kitchens',
-    title: 'Cabinetry that makes daily routines feel lighter.',
+    eyebrow: 'Kitchen Services',
+    title: 'Kitchen cabinets, layouts, and installation kept practical.',
     summary:
-      'Kitchen storage can feel refined without feeling out of reach. These categories create a flexible starting point for future kitchen style pages.',
-    cta: 'Explore Kitchens',
-    href: '/kitchens',
+      'Start with a free kitchen design, compare cabinet options, and move forward only when the layout and price make sense for your home.',
+    cta: 'Get Free Kitchen Design',
+    href: '/#contact',
     variant: 'grid',
     categories: [
       {
-        title: 'White Shaker',
-        summary: 'Clean profiles, bright finishes, and familiar warmth.',
+        title: 'Free Initial Design',
+        summary:
+          'Share photos, measurements, and goals so the first plan starts with your real kitchen.',
         imageUrl:
-          'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80',
-        alt: 'White shaker kitchen cabinets with a clean countertop',
+          'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80',
+        alt: 'Bright kitchen prepared for a cabinet design consultation',
       },
       {
-        title: 'Modern Flat Panel',
-        summary: 'Simple lines for apartments, condos, and modern homes.',
+        title: 'Cabinet Layout Planning',
+        summary:
+          'Base cabinets, upper cabinets, pantry areas, and islands are arranged for everyday use.',
+        imageUrl:
+          'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
+        alt: 'Compact kitchen layout with cabinets and natural light',
+      },
+      {
+        title: 'Style & Finish Selection',
+        summary:
+          'Choose approachable finishes like white shaker, flat panel, wood tone, or two-tone cabinets.',
         imageUrl:
           'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
-        alt: 'Modern flat panel kitchen cabinetry',
+        alt: 'Modern kitchen cabinets with a clean flat panel style',
       },
       {
-        title: 'Warm Wood',
-        summary: 'Natural texture that softens a practical layout.',
+        title: 'Delivery & Installation',
+        summary:
+          'Once approved, the kitchen cabinet order moves into scheduling and professional installation.',
         imageUrl:
-          'https://images.unsplash.com/photo-1764526624453-db32c24eca55?auto=format&fit=crop&w=900&q=80',
-        alt: 'Warm wood kitchen cabinets',
-      },
-      {
-        title: 'Two-Tone',
-        summary: 'Balanced contrast for a custom but approachable look.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-        alt: 'Two tone kitchen cabinetry with island',
-      },
-    ],
-  },
-  {
-    id: 'closets',
-    eyebrow: 'Closets',
-    title: 'Storage systems made for real rooms and real mornings.',
-    summary:
-      'Closet layouts can be calm, practical, and tailored without turning the home into a showroom.',
-    cta: 'Explore Closets',
-    href: '/closets',
-    variant: 'offset',
-    categories: [
-      {
-        title: 'Walk-In Closets',
-        summary: 'Clear zones for hanging, folded storage, and drawers.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?auto=format&fit=crop&w=900&q=80',
-        alt: 'Walk in closet with organized clothing and shelves',
-      },
-      {
-        title: 'Reach-In Closets',
-        summary: 'More usable storage inside everyday footprints.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80',
-        alt: 'Reach in closet with shelves and hanging space',
-      },
-      {
-        title: 'Wardrobes',
-        summary: 'Built-in storage that feels like part of the room.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80',
-        alt: 'Bedroom wardrobe cabinetry with neutral finishes',
-      },
-      {
-        title: 'Wall Storage',
-        summary: 'Vertical space planned with simple, durable details.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80',
-        alt: 'Wall storage shelves in a warm neutral room',
-      },
-    ],
-  },
-  {
-    id: 'garage-storage',
-    eyebrow: 'Garage Storage',
-    title: 'A cleaner garage without losing the utility.',
-    summary:
-      'Garage storage should be tough, organized, and realistic for the way Bay Area homes use every square foot.',
-    cta: 'Explore Garage Storage',
-    href: '/garage-storage',
-    variant: 'band',
-    categories: [
-      {
-        title: 'Garage Cabinets',
-        summary: 'Closed storage for tools, supplies, and seasonal items.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=80',
-        alt: 'Garage cabinet storage system',
-      },
-      {
-        title: 'Wall Storage',
-        summary: 'Keep floors open with practical wall organization.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=900&q=80',
-        alt: 'Organized wall storage for utility items',
-      },
-      {
-        title: 'Utility Storage',
-        summary: 'A better home for household supplies and bulky gear.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80',
-        alt: 'Utility storage cabinets in a clean residential space',
-      },
-      {
-        title: 'Work & Storage Systems',
-        summary: 'Surfaces and cabinets designed around everyday projects.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80',
-        alt: 'Work surface with organized cabinets and tools',
+          'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?auto=format&fit=crop&w=900&q=80',
+        alt: 'Kitchen cabinet detail with warm finishes',
       },
     ],
   },
@@ -244,7 +198,8 @@ export const serviceSections: ServiceSection[] = [
 export const kitchenGalleryGroups: GalleryGroup[] = [
   {
     label: 'Light Kitchens',
-    title: 'Bright layouts with practical storage.',
+    title:
+      'Bright kitchen layouts with clean cabinets, useful counters, and realistic finishes.',
     images: [
       {
         imageUrl:
@@ -253,8 +208,8 @@ export const kitchenGalleryGroups: GalleryGroup[] = [
       },
       {
         imageUrl:
-          'https://images.unsplash.com/photo-1556912173-3bb406ef7e8d?auto=format&fit=crop&w=900&q=80',
-        alt: 'Clean kitchen countertop and upper cabinets',
+          'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80',
+        alt: 'Clean white kitchen countertop and upper cabinets',
       },
       {
         imageUrl:
@@ -269,13 +224,13 @@ export const kitchenGalleryGroups: GalleryGroup[] = [
     ],
   },
   {
-    label: 'Warm Details',
-    title: 'Natural materials that still feel easy to live with.',
+    label: 'Warm Kitchens',
+    title: 'Warm kitchen finishes that keep the room inviting without feeling overdone.',
     images: [
       {
         imageUrl:
-          'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=82',
-        alt: 'Warm kitchen cabinetry with stone counters',
+          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
+        alt: 'Warm two tone kitchen cabinetry with stone counters',
       },
       {
         imageUrl:
@@ -289,65 +244,62 @@ export const kitchenGalleryGroups: GalleryGroup[] = [
       },
       {
         imageUrl:
-          'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80',
-        alt: 'White kitchen in an apartment setting',
+          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
+        alt: 'Two tone kitchen inspiration with island',
       },
     ],
   },
 ];
 
-export const projectGalleryGroups: GalleryGroup[] = [
+export const kitchenStyles: ServiceCategory[] = [
   {
-    label: 'Spaces We Love',
-    title: 'A curated mix of storage ideas for the whole home.',
-    images: [
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1665507279458-b21dea52c447?auto=format&fit=crop&w=1200&q=82',
-        alt: 'White kitchen inspiration with clean cabinetry',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80',
-        alt: 'Closet storage inspiration',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=900&q=80',
-        alt: 'Garage and utility storage inspiration',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80',
-        alt: 'Wall storage inspiration in a neutral home',
-      },
-    ],
+    title: 'White Shaker',
+    summary: 'A clean, familiar kitchen style with bright cabinets and simple hardware.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80',
+    alt: 'White shaker kitchen cabinets with a clean countertop',
   },
   {
-    label: 'Organized Living',
-    title: 'Ideas for cabinetry that disappears into daily life.',
-    images: [
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82',
-        alt: 'Modern kitchen and living storage inspiration',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80',
-        alt: 'Bedroom wardrobe inspiration',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-        alt: 'Two tone kitchen inspiration',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80',
-        alt: 'Utility storage inspiration',
-      },
-    ],
+    title: 'Modern Flat Panel',
+    summary: 'Smooth cabinet fronts for a calm modern kitchen.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
+    alt: 'Modern flat panel kitchen cabinetry',
+  },
+  {
+    title: 'Warm Wood',
+    summary: 'Natural tones that make a practical kitchen feel welcoming.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80',
+    alt: 'Kitchen with warm wood accents and bright light',
+  },
+  {
+    title: 'Two-Tone',
+    summary: 'Balanced contrast for a kitchen that feels custom and approachable.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
+    alt: 'Two tone kitchen with island and light counters',
+  },
+  {
+    title: 'Compact Apartment',
+    summary: 'Efficient cabinet planning for smaller kitchens.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
+    alt: 'Compact apartment kitchen with natural light',
+  },
+  {
+    title: 'Light Contemporary',
+    summary: 'Bright finishes, clean counters, and everyday ease.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=900&q=80',
+    alt: 'Light contemporary kitchen shelving and cabinetry',
+  },
+  {
+    title: 'Family Kitchen',
+    summary: 'Durable cabinets and clear zones for busy daily cooking.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=900&q=80',
+    alt: 'Family kitchen with white cabinets and compact island',
   },
 ];
 
@@ -355,49 +307,58 @@ export const processSteps: ProcessStep[] = [
   {
     icon: 'camera',
     title: 'Send Photos',
-    summary: 'Upload photos and measurements',
+    summary:
+      'Share kitchen photos, rough measurements, and the changes you want to make.',
+  },
+  {
+    icon: 'measure',
+    title: 'Review Layout',
+    summary:
+      'We look at cabinet runs, appliance locations, wall space, and everyday use.',
   },
   {
     icon: 'cube',
     title: 'Get Free Design',
-    summary: 'We create a design and estimate',
+    summary:
+      'You receive a kitchen design direction with cabinet options and an estimate.',
   },
   {
     icon: 'check',
-    title: 'Approve & Order',
-    summary: 'You approve the design and price',
+    title: 'Approve Details',
+    summary:
+      'Confirm the layout, finish direction, order details, and installation plan.',
   },
   {
     icon: 'tools',
-    title: 'We Install',
-    summary: 'Professional installation',
+    title: 'Install Cabinets',
+    summary: 'Your approved kitchen cabinets are delivered and professionally installed.',
   },
 ];
 
 export const faqs: FaqItem[] = [
   {
-    question: 'How does the free design process work?',
+    question: 'How does the free kitchen design process work?',
     answer:
-      'You share photos, rough measurements, and the storage goals for the space. A future phase will connect this flow to a proper upload experience.',
+      'You share photos, rough measurements, and what you want to improve. The first design step focuses on a clear kitchen cabinet layout and an estimate before you decide what comes next.',
   },
   {
-    question: 'Do measurements need to be exact?',
+    question: 'Do my kitchen measurements need to be exact?',
     answer:
-      'Early measurements can be approximate. Final details can be confirmed before ordering and installation.',
+      'Approximate measurements are enough to start. Final cabinet dimensions and details can be confirmed before ordering and installation.',
   },
   {
-    question: 'How is pricing estimated?',
+    question: 'Can you help with small kitchens or apartments?',
     answer:
-      'Pricing depends on size, materials, storage features, and installation needs. The estimate format will become more detailed in a later phase.',
+      'Yes. Compact kitchens can benefit from careful cabinet planning, better use of corners, and simpler finish choices that keep the room feeling open.',
   },
   {
-    question: 'Is installation included?',
+    question: 'What affects the price of a kitchen cabinet project?',
     answer:
-      'The homepage is prepared to explain professional installation as part of the customer journey.',
+      'Price depends on kitchen size, cabinet style, finish selection, layout complexity, and installation needs. The estimate should make those choices easy to understand.',
   },
   {
-    question: 'What areas do you serve?',
+    question: 'Is installation included in the kitchen process?',
     answer:
-      'The site is structured around a Bay Area service area statement that can be refined with exact cities later.',
+      'The site is prepared around a design-to-installation kitchen workflow. Final scheduling and scope can be confirmed when real project details are collected.',
   },
 ];

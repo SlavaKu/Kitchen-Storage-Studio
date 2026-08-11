@@ -1,6 +1,6 @@
-# Kitchen Storage Studio
+# Kitchen & Storage Studio
 
-A modern React application foundation for Kitchen Storage Studio.
+A modern React application for kitchen cabinet design and installation.
 
 ## Scripts
 

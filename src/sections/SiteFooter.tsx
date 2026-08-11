@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { Container } from '@/components/ui/Container';
+import { contactDetails, socialLinks } from '@/data/homepage';
 import { primaryNavigation } from '@/data/navigation';
 
 export function SiteFooter() {
@@ -11,7 +12,8 @@ export function SiteFooter() {
           <div>
             <p className="font-serif text-3xl font-semibold">Kitchen & Storage Studio</p>
             <p className="mt-4 max-w-md text-sm leading-7 text-white/68">
-              Premium cabinetry and practical storage planning for Bay Area homes.
+              Kitchen cabinet design and installation with practical planning,
+              approachable style, and a simple free design process.
             </p>
           </div>
           <nav aria-label="Footer navigation">
@@ -26,15 +28,29 @@ export function SiteFooter() {
             </ul>
           </nav>
           <div className="text-sm leading-7 text-white/72">
-            <a className="block transition hover:text-white" href="tel:+10000000000">
-              (000) 000-0000
+            <a
+              className="block transition hover:text-white"
+              href={contactDetails.phoneHref}
+            >
+              {contactDetails.phoneLabel}
             </a>
             <a
               className="block transition hover:text-white"
-              href="mailto:hello@example.com"
+              href={contactDetails.emailHref}
             >
-              hello@example.com
+              {contactDetails.emailLabel}
             </a>
+            <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+              {socialLinks.map((link) => (
+                <a
+                  className="transition hover:text-white"
+                  href={link.href}
+                  key={link.label}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
         <div className="mt-10 border-t border-white/14 pt-6 text-sm text-white/54">

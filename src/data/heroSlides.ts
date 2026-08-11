@@ -11,7 +11,7 @@ export type HeroSlide = {
 export const heroSlides: HeroSlide[] = [
   {
     eyebrow: 'White Shaker Kitchen',
-    title: 'Quiet cabinetry, bright stone, and refined daily storage.',
+    title: 'Quiet cabinetry, bright counters, and practical daily flow.',
     imageUrl:
       'https://images.unsplash.com/photo-1665507279458-b21dea52c447?auto=format&fit=crop&w=1800&q=82',
     sourceUrl: 'https://unsplash.com/photos/a-kitchen-with-white-cabinets-mge6e3V2fBo',
@@ -22,7 +22,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     eyebrow: 'Modern Apartment Kitchen',
-    title: 'Minimal profiles for compact homes with a premium finish.',
+    title: 'Minimal profiles for compact kitchens with a premium finish.',
     imageUrl:
       'https://images.unsplash.com/photo-1762810944373-d3cd437cbd1d?auto=format&fit=crop&w=1800&q=82',
     sourceUrl:
@@ -34,7 +34,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     eyebrow: 'Warm Wood Kitchen',
-    title: 'Natural walnut tones that make modern storage feel inviting.',
+    title: 'Natural wood tones that make modern kitchen cabinetry inviting.',
     imageUrl:
       'https://images.unsplash.com/photo-1764526624453-db32c24eca55?auto=format&fit=crop&w=1800&q=82',
     sourceUrl:
@@ -46,7 +46,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     eyebrow: 'Bright Family Kitchen',
-    title: 'Durable spaces designed around the way families actually live.',
+    title: 'A durable kitchen designed around the way families actually live.',
     imageUrl:
       'https://images.unsplash.com/photo-1761839258568-fd466a93f68b?auto=format&fit=crop&w=1800&q=82',
     sourceUrl:

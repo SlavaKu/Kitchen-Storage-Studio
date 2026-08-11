@@ -6,17 +6,17 @@ import { processSteps } from '@/data/homepage';
 
 export function ProcessSection() {
   return (
-    <section className="bg-surfaceWarm py-20 sm:py-28" id="process">
+    <section className="bg-surfaceWarm py-20 sm:py-28" id="how-it-works">
       <Container>
         <Reveal>
           <SectionTitle
-            eyebrow="Simple Process"
-            subtitle="A clear path from first photos to a finished installation."
-            title="From idea to installed storage."
+            eyebrow="How It Works"
+            subtitle="A clear kitchen cabinet process from first photos to finished installation."
+            title="From kitchen idea to installed cabinets."
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {processSteps.map((step, index) => (
             <Reveal
               className="relative"
@@ -29,7 +29,7 @@ export function ProcessSection() {
                 {index < processSteps.length - 1 ? (
                   <span
                     aria-hidden="true"
-                    className="absolute left-16 top-10 hidden h-px w-[calc(100%+1.25rem)] bg-border lg:block"
+                    className="absolute left-16 top-10 hidden h-px w-[calc(100%+1.25rem)] bg-border xl:block"
                   />
                 ) : null}
                 <span className="relative z-10 grid size-14 place-items-center rounded-full bg-walnut text-white shadow-soft">

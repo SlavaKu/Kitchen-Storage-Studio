@@ -15,9 +15,9 @@ export function FaqPreview() {
         <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
           <Reveal>
             <SectionTitle
-              eyebrow="FAQ"
-              subtitle="A preview of the common questions future customers will need answered."
-              title="Clear answers before the first design."
+              eyebrow="Kitchen FAQ"
+              subtitle="Practical answers for homeowners starting a kitchen cabinet project."
+              title="Clear answers before the first kitchen design."
             />
           </Reveal>
 

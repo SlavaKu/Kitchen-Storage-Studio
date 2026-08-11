@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
+import { contactDetails } from '@/data/homepage';
 import { primaryNavigation } from '@/data/navigation';
 import { cn } from '@/utils/cn';
 
@@ -41,7 +42,7 @@ export function SiteHeader() {
         )}
       >
         <NavLink
-          aria-label="Kitchen Storage Studio home"
+          aria-label="Kitchen and Storage Studio home"
           className="group flex items-center gap-3"
           to="/"
           onClick={() => setIsMenuOpen(false)}
@@ -80,10 +81,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a className="text-sm font-semibold text-foreground" href="tel:+10000000000">
-            (000) 000-0000
+          <a
+            className="text-sm font-semibold text-foreground"
+            href={contactDetails.phoneHref}
+          >
+            {contactDetails.phoneLabel}
           </a>
-          <Button href="/contact" size="sm">
+          <Button href="/#contact" size="sm">
             Get Free Design
           </Button>
         </div>
@@ -158,10 +162,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="mt-auto grid gap-4 border-t border-border pt-6">
-          <a className="font-semibold text-foreground" href="tel:+10000000000">
-            (000) 000-0000
+          <a className="font-semibold text-foreground" href={contactDetails.phoneHref}>
+            {contactDetails.phoneLabel}
           </a>
-          <Button href="/contact" onClick={() => setIsMenuOpen(false)}>
+          <Button href="/#contact" onClick={() => setIsMenuOpen(false)}>
             Get Free Design
           </Button>
         </div>
