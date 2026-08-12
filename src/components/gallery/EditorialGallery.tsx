@@ -11,6 +11,7 @@ type EditorialGalleryProps = {
   ctaLabel?: string;
   eyebrow: string;
   groups: GalleryGroup[];
+  sectionId?: string;
   title: string;
 };
 
@@ -19,6 +20,7 @@ export function EditorialGallery({
   ctaLabel,
   eyebrow,
   groups,
+  sectionId,
   title,
 }: EditorialGalleryProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -40,8 +42,8 @@ export function EditorialGallery({
   const activeSlide = slides[activeImageIndex];
 
   const galleryId = useMemo(
-    () => `${eyebrow.toLowerCase().replace(/\s+/g, '-')}-gallery`,
-    [eyebrow],
+    () => sectionId ?? `${eyebrow.toLowerCase().replace(/\s+/g, '-')}-gallery`,
+    [eyebrow, sectionId],
   );
 
   const showPrevious = () => {
@@ -102,27 +104,27 @@ export function EditorialGallery({
 
   return (
     <section
-      className="bg-background py-20 sm:py-28"
+      className="bg-background py-16 sm:py-24"
       id={galleryId}
       tabIndex={-1}
       onKeyDown={handleKeyDown}
     >
       <div className="mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8">
-        <Reveal className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               {eyebrow}
             </p>
-            <h2 className="mt-3 font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
               {title}
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-8 text-muted">
+            <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-muted">
               {activeSlide.groupTitle}
             </p>
           </div>
         </Reveal>
 
-        <Reveal className="mt-10">
+        <Reveal className="mt-8">
           <div
             className="coverflow"
             aria-live="polite"
@@ -175,7 +177,7 @@ export function EditorialGallery({
                     alt={image.alt}
                     className="h-full w-full object-cover"
                     decoding="async"
-                    loading={isActive ? 'eager' : 'lazy'}
+                    loading={isVisible ? 'eager' : 'lazy'}
                     src={image.imageUrl}
                     style={{ objectPosition: image.position ?? 'center' }}
                   />

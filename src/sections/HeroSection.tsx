@@ -19,7 +19,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="hero-full relative isolate min-h-[calc(100svh-82px)] overflow-hidden bg-foreground text-white">
+    <section className="hero-full relative isolate min-h-[min(700px,calc(100svh-118px))] overflow-hidden bg-foreground text-white">
       {heroSlides.map((slide, index) => (
         <figure
           aria-hidden={activeSlide !== index}
@@ -47,35 +47,30 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(29_19_14/0.76)_0%,rgb(45_31_24/0.58)_34%,rgb(45_31_24/0.18)_63%,rgb(45_31_24/0.06)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(29_19_14/0.18)_0%,transparent_35%,rgb(29_19_14/0.30)_100%)]" />
 
-      <Container className="relative z-10 flex min-h-[calc(100svh-82px)] items-center py-16 sm:py-20">
-        <div className="max-w-3xl py-12">
-          <p className="text-sm font-semibold uppercase leading-7 tracking-[0.26em] text-white/78">
-            BEAUTIFUL.
-            <br />
-            FUNCTIONAL.
-            <br />
-            AFFORDABLE.
+      <Container className="relative z-10 flex min-h-[min(700px,calc(100svh-118px))] items-center py-10 sm:py-12">
+        <div className="max-w-3xl py-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.26em] text-white/78">
+            Kitchen Cabinets
           </p>
-          <h1 className="mt-8 max-w-3xl font-serif text-5xl font-semibold leading-[0.92] text-white sm:text-7xl lg:text-8xl">
-            Kitchen Cabinets.
+          <h1 className="mt-6 max-w-3xl font-serif text-5xl font-semibold leading-[0.94] text-white sm:text-6xl lg:text-7xl">
+            Designed.
             <br />
-            Better Planning.
+            Delivered. Installed.
           </h1>
-          <p className="mt-7 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
-            Premium kitchen cabinet design and installation with practical layouts,
-            realistic pricing, and a free design to help you begin.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
+            Affordable kitchen solutions for Bay Area homes, rentals, and apartments.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Button href="/#contact" size="lg">
               Get Free Design
             </Button>
             <Button
               className="border-white/35 bg-white/12 text-white backdrop-blur-md hover:border-white/55 hover:bg-white/18"
-              href="/#kitchen-inspiration-gallery"
+              href="/#kitchen-gallery"
               size="lg"
               variant="secondary"
             >
-              View Kitchens
+              See Kitchen Options
             </Button>
           </div>
         </div>

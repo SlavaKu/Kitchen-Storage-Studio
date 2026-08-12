@@ -37,7 +37,7 @@ export function SiteHeader() {
     >
       <Container
         className={cn(
-          'flex items-center justify-between gap-5 transition-all duration-medium',
+          'flex items-center justify-between gap-5 transition-all duration-medium lg:gap-8',
           isCompact ? 'py-3' : 'py-5',
         )}
       >
@@ -61,10 +61,10 @@ export function SiteHeader() {
         </NavLink>
 
         <nav
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-6 lg:flex"
           aria-label="Primary navigation"
         >
-          <ul className="flex items-center gap-7 text-sm font-semibold text-muted">
+          <ul className="flex items-center gap-6 text-sm font-semibold text-muted">
             {primaryNavigation.map((item) => (
               <li key={item.href}>
                 <NavLink
@@ -80,7 +80,7 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <a
             className="text-sm font-semibold text-foreground"
             href={contactDetails.phoneHref}

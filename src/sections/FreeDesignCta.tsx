@@ -1,7 +1,7 @@
 import { Reveal } from '@/components/motion/Reveal';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
-import { Input, Select, Textarea } from '@/components/ui/FormControls';
+import { Input, Textarea } from '@/components/ui/FormControls';
 
 export function FreeDesignCta() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,7 @@ export function FreeDesignCta() {
                 can start with the room you actually have.
               </p>
               <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-white/70">
-                No obligation. No credit card required.
+                Free design consultation. No obligation.
               </p>
             </div>
             <form
@@ -36,7 +36,7 @@ export function FreeDesignCta() {
                 <Input
                   autoComplete="name"
                   id="lead-name"
-                  label="Name"
+                  label="Name *"
                   name="name"
                   placeholder="Your name"
                   required
@@ -44,7 +44,7 @@ export function FreeDesignCta() {
                 <Input
                   autoComplete="tel"
                   id="lead-phone"
-                  label="Phone"
+                  label="Phone *"
                   name="phone"
                   placeholder="Your phone"
                   required
@@ -63,29 +63,23 @@ export function FreeDesignCta() {
                 <Input
                   autoComplete="address-level2"
                   id="lead-city"
-                  label="City or Area"
+                  label="City *"
                   name="city"
                   placeholder="Bay Area"
+                  required
                 />
               </div>
-              <Select id="lead-kitchen-type" label="Kitchen Type" name="kitchenType">
-                <option value="">Select one</option>
-                <option value="small">Small kitchen</option>
-                <option value="condo">Condo or apartment kitchen</option>
-                <option value="family">Family kitchen</option>
-                <option value="unsure">Not sure yet</option>
-              </Select>
               <Textarea
                 id="lead-message"
                 label="Project Notes"
                 name="message"
-                placeholder="Tell us what you want to improve in your kitchen."
+                placeholder="Tell us a little about the kitchen you need."
               />
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs leading-6 text-muted">
                   Photos and uploads can be connected in a later phase.
                 </p>
-                <Button type="submit">Request Design</Button>
+                <Button type="submit">Get My Free Kitchen Design</Button>
               </div>
             </form>
           </div>

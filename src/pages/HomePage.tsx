@@ -1,12 +1,11 @@
 import { EditorialGallery } from '@/components/gallery/EditorialGallery';
-import { kitchenGalleryGroups, serviceSections, stories } from '@/data/homepage';
+import { kitchenGalleryGroups, stories } from '@/data/homepage';
 import { BenefitsStrip } from '@/sections/BenefitsStrip';
 import { FaqPreview } from '@/sections/FaqPreview';
 import { FreeDesignCta } from '@/sections/FreeDesignCta';
 import { HeroSection } from '@/sections/HeroSection';
 import { KitchenStylesSection } from '@/sections/KitchenStylesSection';
 import { ProcessSection } from '@/sections/ProcessSection';
-import { ServiceSection } from '@/sections/ServiceSection';
 import { SiteFooter } from '@/sections/SiteFooter';
 import { StoryImageSection } from '@/sections/StoryImageSection';
 
@@ -16,13 +15,13 @@ export function HomePage() {
       <HeroSection />
       <BenefitsStrip />
       <StoryImageSection story={stories[0]} />
-      <ServiceSection section={serviceSections[0]} />
       <EditorialGallery
         ctaHref="/#contact"
-        ctaLabel="Get Free Kitchen Design"
-        eyebrow="Kitchen Inspiration"
+        ctaLabel="Get Free Design"
+        eyebrow="Kitchen Gallery"
         groups={kitchenGalleryGroups}
-        title="Kitchen ideas with enough polish to inspire and enough restraint to live with."
+        sectionId="kitchen-gallery"
+        title="Find a kitchen style that works for your space."
       />
       <ProcessSection />
       <StoryImageSection story={stories[1]} />

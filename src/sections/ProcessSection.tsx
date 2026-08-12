@@ -11,12 +11,12 @@ export function ProcessSection() {
         <Reveal>
           <SectionTitle
             eyebrow="How It Works"
-            subtitle="A clear kitchen cabinet process from first photos to finished installation."
-            title="From kitchen idea to installed cabinets."
+            subtitle="Four clear steps from the first conversation to installed kitchen cabinets."
+            title="A simple kitchen process."
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {processSteps.map((step, index) => (
             <Reveal
               className="relative"

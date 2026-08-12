@@ -148,53 +148,6 @@ export const stories: Story[] = [
   },
 ];
 
-export const serviceSections: ServiceSection[] = [
-  {
-    id: 'kitchens',
-    eyebrow: 'Kitchen Services',
-    title: 'Kitchen cabinets, layouts, and installation kept practical.',
-    summary:
-      'Start with a free kitchen design, compare cabinet options, and move forward only when the layout and price make sense for your home.',
-    cta: 'Get Free Kitchen Design',
-    href: '/#contact',
-    variant: 'grid',
-    categories: [
-      {
-        title: 'Free Initial Design',
-        summary:
-          'Share photos, measurements, and goals so the first plan starts with your real kitchen.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80',
-        alt: 'Bright kitchen prepared for a cabinet design consultation',
-      },
-      {
-        title: 'Cabinet Layout Planning',
-        summary:
-          'Base cabinets, upper cabinets, pantry areas, and islands are arranged for everyday use.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
-        alt: 'Compact kitchen layout with cabinets and natural light',
-      },
-      {
-        title: 'Style & Finish Selection',
-        summary:
-          'Choose approachable finishes like white shaker, flat panel, wood tone, or two-tone cabinets.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
-        alt: 'Modern kitchen cabinets with a clean flat panel style',
-      },
-      {
-        title: 'Delivery & Installation',
-        summary:
-          'Once approved, the kitchen cabinet order moves into scheduling and professional installation.',
-        imageUrl:
-          'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?auto=format&fit=crop&w=900&q=80',
-        alt: 'Kitchen cabinet detail with warm finishes',
-      },
-    ],
-  },
-];
-
 export const kitchenGalleryGroups: GalleryGroup[] = [
   {
     label: 'Light Kitchens',
@@ -305,33 +258,25 @@ export const kitchenStyles: ServiceCategory[] = [
 
 export const processSteps: ProcessStep[] = [
   {
-    icon: 'camera',
-    title: 'Send Photos',
+    icon: 'home',
+    title: 'Get In Touch',
     summary:
-      'Share kitchen photos, rough measurements, and the changes you want to make.',
+      'Tell us what kind of kitchen you need. Call, text, or request a free design.',
   },
   {
     icon: 'measure',
-    title: 'Review Layout',
-    summary:
-      'We look at cabinet runs, appliance locations, wall space, and everyday use.',
+    title: 'Choose & Measure',
+    summary: 'We help choose the direction and take accurate property measurements.',
   },
   {
     icon: 'cube',
-    title: 'Get Free Design',
-    summary:
-      'You receive a kitchen design direction with cabinet options and an estimate.',
-  },
-  {
-    icon: 'check',
-    title: 'Approve Details',
-    summary:
-      'Confirm the layout, finish direction, order details, and installation plan.',
+    title: 'Design & Approve',
+    summary: 'Review the layout, cabinet options, and project price before approving.',
   },
   {
     icon: 'tools',
-    title: 'Install Cabinets',
-    summary: 'Your approved kitchen cabinets are delivered and professionally installed.',
+    title: 'Delivery & Installation',
+    summary: 'Your kitchen is ordered, delivered, and professionally installed.',
   },
 ];
 
@@ -339,7 +284,7 @@ export const faqs: FaqItem[] = [
   {
     question: 'How does the free kitchen design process work?',
     answer:
-      'You share photos, rough measurements, and what you want to improve. The first design step focuses on a clear kitchen cabinet layout and an estimate before you decide what comes next.',
+      'Start by calling, texting, or requesting a free design. From there, the kitchen direction, measurements, layout, cabinet options, and estimate can be reviewed before you decide what comes next.',
   },
   {
     question: 'Do my kitchen measurements need to be exact?',
