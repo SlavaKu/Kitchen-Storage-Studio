@@ -13,47 +13,44 @@ export const heroSlides: HeroSlide[] = [
     eyebrow: 'White Shaker Kitchen',
     title: 'Quiet cabinetry, bright counters, and practical daily flow.',
     imageUrl:
-      'https://images.unsplash.com/photo-1665507279458-b21dea52c447?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl: 'https://unsplash.com/photos/a-kitchen-with-white-cabinets-mge6e3V2fBo',
-    credit: 'Zac Gudakov',
+      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=82',
+    sourceUrl: 'https://unsplash.com/photos/white-kitchen-cabinets',
+    credit: 'Unsplash',
     position: 'center',
     overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.30), rgb(37 26 20 / 0.08) 44%, rgb(37 26 20 / 0.18))',
+      'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 46%, rgb(37 26 20 / 0.18))',
   },
   {
-    eyebrow: 'Modern Apartment Kitchen',
-    title: 'Minimal profiles for compact kitchens with a premium finish.',
+    eyebrow: 'Modern White Kitchen',
+    title: 'Simple cabinet fronts for clean apartment kitchens.',
     imageUrl:
-      'https://images.unsplash.com/photo-1762810944373-d3cd437cbd1d?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl:
-      'https://unsplash.com/photos/modern-apartment-hallway-with-kitchen-island-and-cabinets-6cFOz5A9ZoQ',
-    credit: 'RETRATO INMOBILIARIO',
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=1800&q=82',
+    sourceUrl: 'https://unsplash.com/photos/modern-white-kitchen',
+    credit: 'Unsplash',
     position: 'center',
     overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.36), rgb(37 26 20 / 0.12) 48%, rgb(37 26 20 / 0.22))',
+      'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 48%, rgb(37 26 20 / 0.18))',
   },
   {
     eyebrow: 'Warm Wood Kitchen',
-    title: 'Natural wood tones that make modern kitchen cabinetry inviting.',
+    title: 'Natural wood tones that keep everyday kitchens inviting.',
     imageUrl:
-      'https://images.unsplash.com/photo-1764526624453-db32c24eca55?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl:
-      'https://unsplash.com/photos/modern-kitchen-with-wooden-cabinets-and-island-XU_ODlSO9ac',
-    credit: 'Clay Banks',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1800&q=82',
+    sourceUrl: 'https://unsplash.com/photos/warm-wood-kitchen',
+    credit: 'Unsplash',
     position: 'center',
     overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.28), rgb(37 26 20 / 0.08) 52%, rgb(37 26 20 / 0.18))',
+      'linear-gradient(90deg, rgb(37 26 20 / 0.30), rgb(37 26 20 / 0.08) 52%, rgb(37 26 20 / 0.18))',
   },
   {
-    eyebrow: 'Bright Family Kitchen',
-    title: 'A durable kitchen designed around the way families actually live.',
+    eyebrow: 'Compact Apartment Kitchen',
+    title: 'Practical cabinet planning for smaller spaces and rentals.',
     imageUrl:
-      'https://images.unsplash.com/photo-1761839258568-fd466a93f68b?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl:
-      'https://unsplash.com/photos/family-cooking-together-in-a-bright-kitchen-m9cBmbOQCmQ',
-    credit: "Land O'Lakes, Inc.",
+      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1800&q=82',
+    sourceUrl: 'https://unsplash.com/photos/compact-apartment-kitchen',
+    credit: 'Unsplash',
     position: 'center',
     overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.42), rgb(37 26 20 / 0.12) 48%, rgb(37 26 20 / 0.22))',
+      'linear-gradient(90deg, rgb(37 26 20 / 0.38), rgb(37 26 20 / 0.12) 48%, rgb(37 26 20 / 0.20))',
   },
 ];

@@ -26,9 +26,8 @@ export function HomePage() {
       <ProcessSection />
       <StoryImageSection story={stories[1]} />
       <KitchenStylesSection />
-      <StoryImageSection story={stories[2]} />
       <FreeDesignCta />
-      <StoryImageSection story={stories[3]} />
+      <StoryImageSection story={stories[2]} />
       <FaqPreview />
       <SiteFooter />
     </>

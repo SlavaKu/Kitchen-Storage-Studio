@@ -116,23 +116,12 @@ export const stories: Story[] = [
   {
     id: 'kitchen-process-story',
     eyebrow: 'Kitchen Process',
-    title: 'Clear steps from first photos to finished kitchen cabinets.',
+    title: 'From choosing your kitchen to professional installation.',
     cta: 'See How It Works',
     href: '/#how-it-works',
     imageUrl:
       'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1800&q=82',
     alt: 'Light kitchen with white cabinets and a compact island',
-    position: 'center',
-  },
-  {
-    id: 'kitchen-style-story',
-    eyebrow: 'Kitchen Styles',
-    title: 'Choose a kitchen look that feels polished and easy to live with.',
-    cta: 'View Styles',
-    href: '/#kitchen-styles',
-    imageUrl:
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Two tone kitchen with island and bright counters',
     position: 'center',
   },
   {
@@ -248,11 +237,11 @@ export const kitchenStyles: ServiceCategory[] = [
     alt: 'Light contemporary kitchen shelving and cabinetry',
   },
   {
-    title: 'Family Kitchen',
-    summary: 'Durable cabinets and clear zones for busy daily cooking.',
+    title: 'Compact Apartment',
+    summary: 'Simple cabinet planning for smaller apartments and rentals.',
     imageUrl:
       'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=900&q=80',
-    alt: 'Family kitchen with white cabinets and compact island',
+    alt: 'Compact apartment kitchen with white cabinets and practical counters',
   },
 ];
 

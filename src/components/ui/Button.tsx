@@ -16,8 +16,8 @@ type ButtonProps = {
 const variants: Record<ComponentVariant, string> = {
   primary: 'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
   secondary:
-    'border border-border bg-surface text-foreground hover:-translate-y-0.5 hover:border-walnut/35 hover:bg-surfaceWarm hover:shadow-soft',
-  ghost: 'text-foreground hover:bg-surfaceWarm',
+    'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
+  ghost: 'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
 };
 
 const sizes: Record<ComponentSize, string> = {

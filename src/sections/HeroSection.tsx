@@ -64,12 +64,7 @@ export function HeroSection() {
             <Button href="/#contact" size="lg">
               Get Free Design
             </Button>
-            <Button
-              className="border-white/35 bg-white/12 text-white backdrop-blur-md hover:border-white/55 hover:bg-white/18"
-              href="/#kitchen-gallery"
-              size="lg"
-              variant="secondary"
-            >
+            <Button href="/#kitchen-gallery" size="lg">
               See Kitchen Options
             </Button>
           </div>
