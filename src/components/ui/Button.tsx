@@ -35,6 +35,9 @@ export function Button({
   type = 'button',
   variant = 'primary',
 }: ButtonProps) {
+  const isExternalHref = href
+    ? /^(https?:|tel:|mailto:)/.test(href)
+    : false;
   const buttonClassName = cn(
     'inline-flex items-center justify-center rounded-full font-semibold uppercase tracking-[0.14em] transition duration-medium ease-refined focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
     variants[variant],
@@ -43,6 +46,14 @@ export function Button({
   );
 
   if (href) {
+    if (isExternalHref) {
+      return (
+        <a className={buttonClassName} href={href} onClick={onClick}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link className={buttonClassName} to={href} onClick={onClick}>
         {children}

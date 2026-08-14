@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { LineIcon } from '@/components/icons/LineIcon';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { contactDetails } from '@/data/homepage';
@@ -31,19 +32,19 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 border-b border-border/75 bg-background/88 backdrop-blur-xl transition-all duration-medium',
+          'sticky top-0 z-40 border-b border-border/75 bg-background/92 backdrop-blur-xl transition-all duration-medium',
         isCompact ? 'shadow-soft' : 'shadow-none',
       )}
     >
       <Container
         className={cn(
           'flex items-center justify-between gap-5 transition-all duration-medium lg:gap-8',
-          isCompact ? 'py-3' : 'py-5',
+          isCompact ? 'py-2 lg:py-3' : 'py-2.5 lg:py-5',
         )}
       >
         <NavLink
           aria-label="Kitchen and Storage Studio home"
-          className="group flex items-center gap-3"
+          className="group flex min-w-0 items-center gap-2.5 sm:gap-3"
           to="/"
           onClick={() => setIsMenuOpen(false)}
         >
@@ -51,10 +52,10 @@ export function SiteHeader() {
             KS
           </span>
           <span className="leading-none">
-            <span className="block font-serif text-xl font-semibold text-foreground">
+            <span className="block truncate font-serif text-lg font-semibold text-foreground sm:text-xl">
               Kitchen & Storage
             </span>
-            <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+            <span className="mt-1 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted sm:text-xs sm:tracking-[0.18em]">
               Studio
             </span>
           </span>
@@ -88,40 +89,50 @@ export function SiteHeader() {
             {contactDetails.phoneLabel}
           </a>
           <Button href="/#contact" size="sm">
-            Get Free Design
+            Get Free Estimate
           </Button>
         </div>
 
-        <button
-          aria-controls="mobile-navigation"
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          className="relative z-50 grid size-11 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:hidden"
-          type="button"
-          onClick={() => setIsMenuOpen((current) => !current)}
-        >
-          <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
-          <span className="grid w-5 gap-1.5">
-            <span
-              className={cn(
-                'h-px w-5 bg-current transition duration-medium',
-                isMenuOpen && 'translate-y-[7px] rotate-45',
-              )}
-            />
-            <span
-              className={cn(
-                'h-px w-5 bg-current transition duration-medium',
-                isMenuOpen && 'opacity-0',
-              )}
-            />
-            <span
-              className={cn(
-                'h-px w-5 bg-current transition duration-medium',
-                isMenuOpen && '-translate-y-[7px] -rotate-45',
-              )}
-            />
-          </span>
-        </button>
+        <div className="ml-auto flex shrink-0 items-center gap-2.5 lg:hidden">
+          <a
+            aria-label="Call Kitchen and Storage Studio"
+            className="grid size-10 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            href={contactDetails.phoneHref}
+          >
+            <LineIcon className="size-5" name="phone" />
+          </a>
+
+          <button
+            aria-controls="mobile-navigation"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            className="relative z-50 grid size-10 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            type="button"
+            onClick={() => setIsMenuOpen((current) => !current)}
+          >
+            <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
+            <span className="grid w-5 gap-1.5">
+              <span
+                className={cn(
+                  'h-px w-5 bg-current transition duration-medium',
+                  isMenuOpen && 'translate-y-[7px] rotate-45',
+                )}
+              />
+              <span
+                className={cn(
+                  'h-px w-5 bg-current transition duration-medium',
+                  isMenuOpen && 'opacity-0',
+                )}
+              />
+              <span
+                className={cn(
+                  'h-px w-5 bg-current transition duration-medium',
+                  isMenuOpen && '-translate-y-[7px] -rotate-45',
+                )}
+              />
+            </span>
+          </button>
+        </div>
       </Container>
 
       <div
@@ -166,7 +177,7 @@ export function SiteHeader() {
             {contactDetails.phoneLabel}
           </a>
           <Button href="/#contact" onClick={() => setIsMenuOpen(false)}>
-            Get Free Design
+            Get Free Estimate
           </Button>
         </div>
       </aside>

@@ -10,9 +10,11 @@ export type LineIconName =
   | 'home'
   | 'map'
   | 'measure'
+  | 'phone'
   | 'spark'
   | 'tools'
-  | 'wallet';
+  | 'wallet'
+  | 'whatsapp';
 
 type LineIconProps = {
   className?: string;
@@ -60,6 +62,9 @@ const paths: Record<LineIconName, React.ReactNode> = {
       <path d="M14 7l3 3M11 10l2 2M8 13l3 3" />
     </>
   ),
+  phone: (
+    <path d="M8 5l2.2 4.8-1.4 1.1a11 11 0 0 0 4.3 4.3l1.1-1.4L19 16v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3 7.2 2 2 0 0 1 5 5z" />
+  ),
   spark: (
     <>
       <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" />
@@ -76,6 +81,12 @@ const paths: Record<LineIconName, React.ReactNode> = {
     <>
       <path d="M4 7h15v12H4z" />
       <path d="M4 9h15M16 14h3" />
+    </>
+  ),
+  whatsapp: (
+    <>
+      <path d="M5.5 19.2l.9-3.1A7.5 7.5 0 1 1 9 18.5z" />
+      <path d="M9.4 8.8c.2-.5.4-.5.7-.5h.4c.2 0 .4.1.5.4l.7 1.6c.1.3.1.4-.1.6l-.4.5c.6 1.1 1.4 1.9 2.5 2.5l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.4c0 .3 0 .5-.5.7-.5.3-1.1.4-1.8.2-2.9-.8-5.2-3.1-6-6-.2-.7-.1-1.3.2-1.8z" />
     </>
   ),
 };

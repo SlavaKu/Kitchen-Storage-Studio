@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
+import { FloatingContactButtons } from '@/components/FloatingContactButtons';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export function AppLayout() {
@@ -25,6 +26,7 @@ export function AppLayout() {
       <main>
         <Outlet />
       </main>
+      <FloatingContactButtons />
     </div>
   );
 }

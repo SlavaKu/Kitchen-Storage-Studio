@@ -66,7 +66,9 @@ export type SocialLink = {
 
 export const contactDetails = {
   phoneLabel: '(000) 000-0000',
+  phoneNumber: '+10000000000',
   phoneHref: 'tel:+10000000000',
+  whatsappHref: 'https://wa.me/10000000000',
   emailLabel: 'hello@example.com',
   emailHref: 'mailto:hello@example.com',
 };
@@ -81,8 +83,8 @@ export const socialLinks: SocialLink[] = [
 export const benefits: Benefit[] = [
   {
     icon: 'cube',
-    title: 'Free Kitchen Design',
-    summary: 'A simple visual plan before you decide.',
+    title: 'Free Kitchen Estimate',
+    summary: 'A simple estimate before you decide.',
   },
   {
     icon: 'wallet',
@@ -106,7 +108,7 @@ export const stories: Story[] = [
     id: 'kitchen-design-story',
     eyebrow: 'Kitchen Design',
     title: 'A kitchen planned around your layout, budget, and daily routine.',
-    cta: 'Start Free Design',
+    cta: 'Get Free Estimate',
     href: '/#contact',
     imageUrl:
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1800&q=82',
@@ -126,9 +128,9 @@ export const stories: Story[] = [
   },
   {
     id: 'kitchen-contact-story',
-    eyebrow: 'Free Kitchen Design',
+    eyebrow: 'Free Kitchen Estimate',
     title: 'Send a few details and start with a kitchen plan you can understand.',
-    cta: 'Open Form',
+    cta: 'Get Free Estimate',
     href: '/#contact',
     imageUrl:
       'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=82',
@@ -250,7 +252,7 @@ export const processSteps: ProcessStep[] = [
     icon: 'home',
     title: 'Get In Touch',
     summary:
-      'Tell us what kind of kitchen you need. Call, text, or request a free design.',
+      'Tell us what kind of kitchen you need. Call, text, or request a free estimate.',
   },
   {
     icon: 'measure',
@@ -271,9 +273,9 @@ export const processSteps: ProcessStep[] = [
 
 export const faqs: FaqItem[] = [
   {
-    question: 'How does the free kitchen design process work?',
+    question: 'How does the free kitchen estimate process work?',
     answer:
-      'Start by calling, texting, or requesting a free design. From there, the kitchen direction, measurements, layout, cabinet options, and estimate can be reviewed before you decide what comes next.',
+      'Start by calling, texting, or requesting a free estimate. From there, the kitchen direction, measurements, layout, cabinet options, and estimate can be reviewed before you decide what comes next.',
   },
   {
     question: 'Do my kitchen measurements need to be exact?',

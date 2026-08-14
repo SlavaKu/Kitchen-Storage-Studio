@@ -13,7 +13,7 @@ export function SiteFooter() {
             <p className="font-serif text-3xl font-semibold">Kitchen & Storage Studio</p>
             <p className="mt-4 max-w-md text-sm leading-7 text-white/72">
               Kitchen cabinet design and installation with practical planning,
-              approachable style, and a simple free design process.
+              approachable style, and a simple free estimate process.
             </p>
           </div>
           <nav aria-label="Footer navigation">

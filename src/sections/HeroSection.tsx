@@ -60,9 +60,12 @@ export function HeroSection() {
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
             Affordable kitchen solutions for Bay Area homes, rentals, and apartments.
           </p>
+          <p className="mt-5 max-w-2xl text-sm font-semibold uppercase tracking-[0.14em] text-white/82 sm:text-base">
+            FREE ESTIMATE • SAME-DAY MEASUREMENT AVAILABLE
+          </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Button href="/#contact" size="lg">
-              Get Free Design
+              Get Free Estimate
             </Button>
             <Button href="/#kitchen-gallery" size="lg">
               See Kitchen Options
