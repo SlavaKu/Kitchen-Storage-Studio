@@ -65,10 +65,10 @@ export type SocialLink = {
 };
 
 export const contactDetails = {
-  phoneLabel: '(000) 000-0000',
-  phoneNumber: '+10000000000',
-  phoneHref: 'tel:+10000000000',
-  whatsappHref: 'https://wa.me/10000000000',
+  phoneLabel: '+1 (650) 484-5564',
+  phoneNumber: '+16504845564',
+  phoneHref: 'tel:+16504845564',
+  whatsappHref: 'https://wa.me/16504845564',
   emailLabel: 'hello@example.com',
   emailHref: 'mailto:hello@example.com',
 };
