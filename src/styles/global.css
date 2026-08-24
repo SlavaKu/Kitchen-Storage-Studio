@@ -316,7 +316,6 @@ select {
     overflow: clip;
     cursor: grab;
     touch-action: pan-y;
-    user-select: none;
   }
 
   .coverflow:active {
@@ -457,7 +456,6 @@ select {
     overflow: clip;
     cursor: grab;
     touch-action: pan-y;
-    user-select: none;
   }
 
   .style-carousel:active {
