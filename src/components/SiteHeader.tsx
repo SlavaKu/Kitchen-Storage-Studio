@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import kitchenUpLogo from '@/assets/kitchen-up-logo.jpg';
+import kitchenUpLogo from '@/assets/kitchen-up-logo.png';
 import { LineIcon } from '@/components/icons/LineIcon';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
