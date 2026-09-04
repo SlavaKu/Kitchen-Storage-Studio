@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import kitchenUpLogo from '@/assets/kitchen-up-logo.jpg';
 import { LineIcon } from '@/components/icons/LineIcon';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
@@ -43,22 +44,16 @@ export function SiteHeader() {
         )}
       >
         <NavLink
-          aria-label="Kitchen and Storage Studio home"
-          className="group flex min-w-0 items-center gap-2.5 sm:gap-3"
+          aria-label="Kitchen Up home"
+          className="group flex min-w-0 items-center"
           to="/"
           onClick={() => setIsMenuOpen(false)}
         >
-          <span className="grid size-10 place-items-center rounded-full border border-walnut/20 bg-surface text-sm font-semibold text-walnut shadow-soft transition group-hover:-translate-y-0.5">
-            KS
-          </span>
-          <span className="leading-none">
-            <span className="block truncate font-serif text-lg font-semibold text-foreground sm:text-xl">
-              Kitchen & Storage
-            </span>
-            <span className="mt-1 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted sm:text-xs sm:tracking-[0.18em]">
-              Studio
-            </span>
-          </span>
+          <img
+            alt="Kitchen Up Cabinets Design Installation"
+            className="h-10 w-auto max-w-[180px] object-contain transition group-hover:-translate-y-0.5 sm:h-12 sm:max-w-[230px] lg:h-14 lg:max-w-[250px]"
+            src={kitchenUpLogo}
+          />
         </NavLink>
 
         <nav
