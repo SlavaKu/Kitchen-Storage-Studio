@@ -1,3 +1,8 @@
+import realKitchenProject01 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-01.webp';
+import realKitchenProject02 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-02.webp';
+import realKitchenProject03 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-03.webp';
+import realKitchenProject04 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-04.webp';
+import realKitchenProject05 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-05.webp';
 import type { LineIconName } from '@/components/icons/LineIcon';
 
 export type Benefit = {
@@ -141,55 +146,29 @@ export const stories: Story[] = [
 
 export const kitchenGalleryGroups: GalleryGroup[] = [
   {
-    label: 'Light Kitchens',
+    label: 'Real Kitchen Projects',
     title:
-      'Bright kitchen layouts with clean cabinets, useful counters, and realistic finishes.',
+      'Completed kitchen cabinet projects with clean layouts, practical storage, and installed finishes.',
     images: [
       {
-        imageUrl:
-          'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1200&q=82',
-        alt: 'Bright kitchen with white cabinets and a compact island',
+        imageUrl: realKitchenProject01,
+        alt: 'Real kitchen cabinet installation with white shaker cabinets and a bright countertop',
       },
       {
-        imageUrl:
-          'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80',
-        alt: 'Clean white kitchen countertop and upper cabinets',
+        imageUrl: realKitchenProject02,
+        alt: 'Real kitchen project with white cabinets, open shelving, and finished cabinet storage',
       },
       {
-        imageUrl:
-          'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=900&q=80',
-        alt: 'Modern kitchen shelving and cabinetry',
+        imageUrl: realKitchenProject03,
+        alt: 'Real kitchen remodel with installed upper cabinets and a clean working layout',
       },
       {
-        imageUrl:
-          'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
-        alt: 'Small kitchen with natural light',
-      },
-    ],
-  },
-  {
-    label: 'Warm Kitchens',
-    title: 'Warm kitchen finishes that keep the room inviting without feeling overdone.',
-    images: [
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-        alt: 'Warm two tone kitchen cabinetry with stone counters',
+        imageUrl: realKitchenProject04,
+        alt: 'Real kitchen cabinet project with white cabinetry, backsplash, and practical counter space',
       },
       {
-        imageUrl:
-          'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?auto=format&fit=crop&w=900&q=80',
-        alt: 'Kitchen cabinet detail with warm finishes',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80',
-        alt: 'Kitchen with wood accents and bright light',
-      },
-      {
-        imageUrl:
-          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-        alt: 'Two tone kitchen inspiration with island',
+        imageUrl: realKitchenProject05,
+        alt: 'Real completed kitchen installation with bright cabinets and modern storage details',
       },
     ],
   },
