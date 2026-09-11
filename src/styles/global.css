@@ -495,7 +495,8 @@ select {
     height: 100%;
     width: 100%;
     min-height: 0;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     background: rgb(var(--color-surfaceWarm));
     border-radius: calc(var(--radius-panel) - 0.45rem);
   }
