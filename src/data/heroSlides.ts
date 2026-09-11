@@ -1,3 +1,8 @@
+import kitchenHeroBackground01 from '@/assets/kitchen-backgrounds/kitchen-cabinet-design-bay-area-hero-01.webp';
+import kitchenHeroBackground02 from '@/assets/kitchen-backgrounds/modern-kitchen-cabinet-installation-hero-02.webp';
+import kitchenHeroBackground03 from '@/assets/kitchen-backgrounds/apartment-kitchen-cabinets-hero-03.webp';
+import kitchenHeroBackground04 from '@/assets/kitchen-backgrounds/white-kitchen-cabinet-installation-hero-04.webp';
+
 export type HeroSlide = {
   eyebrow: string;
   title: string;
@@ -12,10 +17,9 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: 'White Shaker Kitchen',
     title: 'Quiet cabinetry, bright counters, and practical daily flow.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl: 'https://unsplash.com/photos/white-kitchen-cabinets',
-    credit: 'Unsplash',
+    imageUrl: kitchenHeroBackground01,
+    sourceUrl: '#',
+    credit: 'Kitchen Up',
     position: 'center',
     overlay:
       'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 46%, rgb(37 26 20 / 0.18))',
@@ -23,10 +27,9 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: 'Modern White Kitchen',
     title: 'Simple cabinet fronts for clean apartment kitchens.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl: 'https://unsplash.com/photos/modern-white-kitchen',
-    credit: 'Unsplash',
+    imageUrl: kitchenHeroBackground02,
+    sourceUrl: '#',
+    credit: 'Kitchen Up',
     position: 'center',
     overlay:
       'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 48%, rgb(37 26 20 / 0.18))',
@@ -34,10 +37,9 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: 'Warm Wood Kitchen',
     title: 'Natural wood tones that keep everyday kitchens inviting.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl: 'https://unsplash.com/photos/warm-wood-kitchen',
-    credit: 'Unsplash',
+    imageUrl: kitchenHeroBackground03,
+    sourceUrl: '#',
+    credit: 'Kitchen Up',
     position: 'center',
     overlay:
       'linear-gradient(90deg, rgb(37 26 20 / 0.30), rgb(37 26 20 / 0.08) 52%, rgb(37 26 20 / 0.18))',
@@ -45,10 +47,9 @@ export const heroSlides: HeroSlide[] = [
   {
     eyebrow: 'Compact Apartment Kitchen',
     title: 'Practical cabinet planning for smaller spaces and rentals.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1800&q=82',
-    sourceUrl: 'https://unsplash.com/photos/compact-apartment-kitchen',
-    credit: 'Unsplash',
+    imageUrl: kitchenHeroBackground04,
+    sourceUrl: '#',
+    credit: 'Kitchen Up',
     position: 'center',
     overlay:
       'linear-gradient(90deg, rgb(37 26 20 / 0.38), rgb(37 26 20 / 0.12) 48%, rgb(37 26 20 / 0.20))',

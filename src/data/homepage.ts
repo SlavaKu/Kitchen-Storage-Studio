@@ -9,6 +9,9 @@ import kitchenDesignOption03 from '@/assets/kitchen-variants/kitchen-design-opti
 import kitchenDesignOption04 from '@/assets/kitchen-variants/kitchen-design-option-04.webp';
 import kitchenDesignOption05 from '@/assets/kitchen-variants/kitchen-design-option-05.webp';
 import kitchenDesignOption06 from '@/assets/kitchen-variants/kitchen-design-option-06.webp';
+import kitchenStoryBackground05 from '@/assets/kitchen-backgrounds/custom-kitchen-cabinet-design-story-05.webp';
+import kitchenStoryBackground06 from '@/assets/kitchen-backgrounds/kitchen-remodel-cabinet-process-story-06.webp';
+import kitchenStoryBackground07 from '@/assets/kitchen-backgrounds/free-kitchen-estimate-cabinet-installation-story-07.webp';
 import type { LineIconName } from '@/components/icons/LineIcon';
 
 export type Benefit = {
@@ -121,9 +124,8 @@ export const stories: Story[] = [
     title: 'A kitchen planned around your layout, budget, and daily routine.',
     cta: 'Get Free Estimate',
     href: '/#contact',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Bright white kitchen with simple cabinets and natural light',
+    imageUrl: kitchenStoryBackground05,
+    alt: 'Custom kitchen cabinet design background for Bay Area homes',
     position: 'center',
   },
   {
@@ -132,9 +134,8 @@ export const stories: Story[] = [
     title: 'From choosing your kitchen to professional installation.',
     cta: 'See How It Works',
     href: '/#how-it-works',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1800&q=82',
-    alt: 'Light kitchen with white cabinets and a compact island',
+    imageUrl: kitchenStoryBackground06,
+    alt: 'Kitchen cabinet remodel process with installed storage and counters',
     position: 'center',
   },
   {
@@ -143,9 +144,8 @@ export const stories: Story[] = [
     title: 'Send a few details and start with a kitchen plan you can understand.',
     cta: 'Get Free Estimate',
     href: '/#contact',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1800&q=82',
-    alt: 'White kitchen cabinets with a clean countertop',
+    imageUrl: kitchenStoryBackground07,
+    alt: 'Kitchen cabinet installation background for a free kitchen estimate',
     position: 'center',
   },
 ];
