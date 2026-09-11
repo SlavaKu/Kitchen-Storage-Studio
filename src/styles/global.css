@@ -228,12 +228,12 @@ select {
   }
 
   .hero-image {
-    transform: scale(1.01);
+    transform: scale(1);
     transition: transform 10000ms linear;
   }
 
   .hero-image.is-active {
-    transform: scale(1.035);
+    transform: scale(1.01);
   }
 
   .hero-progress {
@@ -294,6 +294,10 @@ select {
   .story-section + section {
     position: relative;
     z-index: 1;
+  }
+
+  #kitchen-contact-story {
+    margin-bottom: -122vh;
   }
 
   .story-image {
@@ -614,6 +618,10 @@ select {
     margin-bottom: -105vh;
   }
 
+  #kitchen-contact-story {
+    margin-bottom: -112vh;
+  }
+
   .story-sticky {
     top: 72px;
     height: calc(100svh - 72px);
@@ -656,7 +664,7 @@ select {
   }
 
   .hero-full {
-    min-height: max(600px, calc(100svh - 88px));
+    min-height: max(640px, calc(100svh - 72px));
   }
 
   .coverflow {

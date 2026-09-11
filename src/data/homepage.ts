@@ -10,7 +10,7 @@ import kitchenDesignOption04 from '@/assets/kitchen-variants/kitchen-design-opti
 import kitchenDesignOption05 from '@/assets/kitchen-variants/kitchen-design-option-05.webp';
 import kitchenDesignOption06 from '@/assets/kitchen-variants/kitchen-design-option-06.webp';
 import kitchenStoryBackground05 from '@/assets/kitchen-backgrounds/custom-kitchen-cabinet-design-story-05.webp';
-import kitchenStoryBackground06 from '@/assets/kitchen-backgrounds/kitchen-remodel-cabinet-process-story-06.webp';
+import kitchenStoryBackground06 from '@/assets/kitchen-backgrounds/kitchen-cabinet-process-story-06-updated.webp';
 import kitchenStoryBackground07 from '@/assets/kitchen-backgrounds/free-kitchen-estimate-cabinet-installation-story-07.webp';
 import type { LineIconName } from '@/components/icons/LineIcon';
 
@@ -135,7 +135,7 @@ export const stories: Story[] = [
     cta: 'See How It Works',
     href: '/#how-it-works',
     imageUrl: kitchenStoryBackground06,
-    alt: 'Kitchen cabinet remodel process with installed storage and counters',
+    alt: 'Kitchen cabinet process background with modern cabinets and warm counters',
     position: 'center',
   },
   {
