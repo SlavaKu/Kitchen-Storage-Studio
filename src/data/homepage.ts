@@ -3,6 +3,12 @@ import realKitchenProject02 from '@/assets/kitchen-projects/real-kitchen-cabinet
 import realKitchenProject03 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-03.webp';
 import realKitchenProject04 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-04.webp';
 import realKitchenProject05 from '@/assets/kitchen-projects/real-kitchen-cabinet-installation-05.webp';
+import kitchenDesignOption01 from '@/assets/kitchen-variants/kitchen-design-option-01.webp';
+import kitchenDesignOption02 from '@/assets/kitchen-variants/kitchen-design-option-02.webp';
+import kitchenDesignOption03 from '@/assets/kitchen-variants/kitchen-design-option-03.webp';
+import kitchenDesignOption04 from '@/assets/kitchen-variants/kitchen-design-option-04.webp';
+import kitchenDesignOption05 from '@/assets/kitchen-variants/kitchen-design-option-05.webp';
+import kitchenDesignOption06 from '@/assets/kitchen-variants/kitchen-design-option-06.webp';
 import type { LineIconName } from '@/components/icons/LineIcon';
 
 export type Benefit = {
@@ -178,51 +184,38 @@ export const kitchenStyles: ServiceCategory[] = [
   {
     title: 'White Shaker',
     summary: 'A clean, familiar kitchen style with bright cabinets and simple hardware.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=80',
-    alt: 'White shaker kitchen cabinets with a clean countertop',
+    imageUrl: kitchenDesignOption01,
+    alt: 'White shaker kitchen cabinet design option with bright counters',
   },
   {
     title: 'Modern Flat Panel',
     summary: 'Smooth cabinet fronts for a calm modern kitchen.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
-    alt: 'Modern flat panel kitchen cabinetry',
+    imageUrl: kitchenDesignOption02,
+    alt: 'Modern flat panel kitchen cabinet design with clean finishes',
   },
   {
     title: 'Warm Wood',
     summary: 'Natural tones that make a practical kitchen feel welcoming.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80',
-    alt: 'Kitchen with warm wood accents and bright light',
+    imageUrl: kitchenDesignOption03,
+    alt: 'Warm wood kitchen cabinet option with natural cabinet tones',
   },
   {
     title: 'Two-Tone',
     summary: 'Balanced contrast for a kitchen that feels custom and approachable.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-    alt: 'Two tone kitchen with island and light counters',
+    imageUrl: kitchenDesignOption04,
+    alt: 'Two tone kitchen cabinet design option with balanced contrast',
   },
   {
     title: 'Compact Apartment',
     summary: 'Efficient cabinet planning for smaller kitchens.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
-    alt: 'Compact apartment kitchen with natural light',
+    imageUrl: kitchenDesignOption05,
+    alt: 'Compact apartment kitchen cabinet option for smaller spaces',
   },
   {
     title: 'Light Contemporary',
     summary: 'Bright finishes, clean counters, and everyday ease.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=900&q=80',
-    alt: 'Light contemporary kitchen shelving and cabinetry',
-  },
-  {
-    title: 'Compact Apartment',
-    summary: 'Simple cabinet planning for smaller apartments and rentals.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=900&q=80',
-    alt: 'Compact apartment kitchen with white cabinets and practical counters',
+    imageUrl: kitchenDesignOption06,
+    alt: 'Light contemporary kitchen cabinet design with bright finishes',
   },
 ];
 

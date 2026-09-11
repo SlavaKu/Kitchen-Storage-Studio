@@ -116,7 +116,7 @@ export function KitchenStylesSection() {
                 >
                   <img
                     alt={style.alt}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                     decoding="async"
                     loading={isVisible ? 'eager' : 'lazy'}
                     src={style.imageUrl}
