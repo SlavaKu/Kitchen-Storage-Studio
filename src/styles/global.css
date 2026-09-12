@@ -297,7 +297,7 @@ select {
   }
 
   #kitchen-contact-story {
-    margin-bottom: -122vh;
+    margin-bottom: -132vh;
   }
 
   .story-image {
@@ -619,7 +619,7 @@ select {
   }
 
   #kitchen-contact-story {
-    margin-bottom: -112vh;
+    margin-bottom: -122vh;
   }
 
   .story-sticky {
@@ -664,7 +664,7 @@ select {
   }
 
   .hero-full {
-    min-height: max(640px, calc(100svh - 72px));
+    min-height: max(680px, calc(100svh - 48px));
   }
 
   .coverflow {

@@ -19,7 +19,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="hero-full relative isolate min-h-[min(780px,calc(100svh-72px))] overflow-hidden bg-foreground text-white">
+    <section className="hero-full relative isolate min-h-[min(840px,calc(100svh-48px))] overflow-hidden bg-foreground text-white">
       {heroSlides.map((slide, index) => (
         <figure
           aria-hidden={activeSlide !== index}
@@ -47,7 +47,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(29_19_14/0.76)_0%,rgb(45_31_24/0.58)_34%,rgb(45_31_24/0.18)_63%,rgb(45_31_24/0.06)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(29_19_14/0.18)_0%,transparent_35%,rgb(29_19_14/0.30)_100%)]" />
 
-      <Container className="relative z-10 flex min-h-[min(780px,calc(100svh-72px))] items-center py-10 sm:py-12">
+      <Container className="relative z-10 flex min-h-[min(840px,calc(100svh-48px))] items-center py-10 sm:py-12">
         <div className="max-w-3xl py-8">
           <p className="text-sm font-semibold uppercase tracking-[0.26em] text-white/78">
             Kitchen Cabinets
