@@ -30,6 +30,15 @@ export function HeroSection() {
           key={slide.imageUrl}
         >
           <img
+            aria-hidden="true"
+            alt=""
+            className="hero-image-backdrop h-full w-full object-cover"
+            decoding="async"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            src={slide.imageUrl}
+            style={{ objectPosition: slide.position }}
+          />
+          <img
             alt={slide.eyebrow}
             className={cn(
               'hero-image h-full w-full object-cover',

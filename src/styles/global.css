@@ -227,13 +227,22 @@ select {
     transform: translateY(-1px);
   }
 
+  .hero-image-backdrop,
+  .story-image-backdrop {
+    position: absolute;
+    inset: 0;
+    filter: blur(18px) brightness(0.82);
+    transform: scale(1.08);
+  }
+
   .hero-image {
-    transform: scale(1);
+    position: relative;
+    transform: scale(0.94);
     transition: transform 10000ms linear;
   }
 
   .hero-image.is-active {
-    transform: scale(1.01);
+    transform: scale(0.955);
   }
 
   .hero-progress {
@@ -301,11 +310,12 @@ select {
   }
 
   .story-image {
-    transform: none;
+    position: relative;
+    transform: scale(0.94);
   }
 
   .story-section:hover .story-image {
-    transform: none;
+    transform: scale(0.94);
   }
 
   .gallery-tile {
@@ -765,9 +775,12 @@ select {
     transform: none;
   }
 
-  .story-image,
-  .story-section:hover .story-image,
   .wood-button::before {
     transform: none;
+  }
+
+  .story-image,
+  .story-section:hover .story-image {
+    transform: scale(0.94);
   }
 }
