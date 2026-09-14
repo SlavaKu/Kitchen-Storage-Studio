@@ -15,8 +15,7 @@ type ButtonProps = {
 
 const variants: Record<ComponentVariant, string> = {
   primary: 'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
-  secondary:
-    'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
+  secondary: 'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
   ghost: 'wood-button text-white shadow-soft hover:-translate-y-px hover:shadow-lift',
 };
 
@@ -35,9 +34,7 @@ export function Button({
   type = 'button',
   variant = 'primary',
 }: ButtonProps) {
-  const isExternalHref = href
-    ? /^(https?:|tel:|mailto:)/.test(href)
-    : false;
+  const isExternalHref = href ? /^(https?:|tel:|mailto:)/.test(href) : false;
   const buttonClassName = cn(
     'inline-flex items-center justify-center rounded-full font-semibold uppercase tracking-[0.14em] transition duration-medium ease-refined focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
     variants[variant],

@@ -1,4 +1,6 @@
 dist
 node_modules
+.agents
+.codex-edge-profile
 package-lock.json
 pnpm-lock.yaml

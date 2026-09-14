@@ -6,7 +6,10 @@ import { primaryNavigation } from '@/data/navigation';
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 bg-primaryDark py-20 text-white sm:py-24 lg:py-28" id="footer">
+    <footer
+      className="relative z-10 bg-primaryDark py-20 text-white sm:py-24 lg:py-28"
+      id="footer"
+    >
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.9fr_0.9fr] lg:items-start">
           <div>

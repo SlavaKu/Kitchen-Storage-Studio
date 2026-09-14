@@ -1,6 +1,8 @@
 node_modules
 dist
 .agents
+.codex-edge-profile
+vite-*.log
 .env
 .env.*
 !.env.example

@@ -33,7 +33,7 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-          'sticky top-0 z-40 border-b border-border/75 bg-background/92 backdrop-blur-xl transition-all duration-medium',
+        'sticky top-0 z-40 border-b border-border/75 bg-background/92 backdrop-blur-xl transition-all duration-medium',
         isCompact ? 'shadow-soft' : 'shadow-none',
       )}
     >
