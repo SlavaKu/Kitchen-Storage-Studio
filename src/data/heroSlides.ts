@@ -7,10 +7,7 @@ export type HeroSlide = {
   eyebrow: string;
   title: string;
   imageUrl: string;
-  sourceUrl: string;
-  credit: string;
   position: string;
-  overlay: string;
 };
 
 export const heroSlides: HeroSlide[] = [
@@ -18,40 +15,24 @@ export const heroSlides: HeroSlide[] = [
     eyebrow: 'White Shaker Kitchen',
     title: 'Quiet cabinetry, bright counters, and practical daily flow.',
     imageUrl: kitchenHeroBackground01,
-    sourceUrl: '#',
-    credit: 'Kitchen Up',
     position: 'center',
-    overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 46%, rgb(37 26 20 / 0.18))',
   },
   {
     eyebrow: 'Modern White Kitchen',
     title: 'Simple cabinet fronts for clean apartment kitchens.',
     imageUrl: kitchenHeroBackground02,
-    sourceUrl: '#',
-    credit: 'Kitchen Up',
     position: 'center',
-    overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.34), rgb(37 26 20 / 0.10) 48%, rgb(37 26 20 / 0.18))',
   },
   {
     eyebrow: 'Warm Wood Kitchen',
     title: 'Natural wood tones that keep everyday kitchens inviting.',
     imageUrl: kitchenHeroBackground03,
-    sourceUrl: '#',
-    credit: 'Kitchen Up',
     position: 'center',
-    overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.30), rgb(37 26 20 / 0.08) 52%, rgb(37 26 20 / 0.18))',
   },
   {
     eyebrow: 'Compact Apartment Kitchen',
     title: 'Practical cabinet planning for smaller spaces and rentals.',
     imageUrl: kitchenHeroBackground04,
-    sourceUrl: '#',
-    credit: 'Kitchen Up',
     position: 'center',
-    overlay:
-      'linear-gradient(90deg, rgb(37 26 20 / 0.38), rgb(37 26 20 / 0.12) 48%, rgb(37 26 20 / 0.20))',
   },
 ];

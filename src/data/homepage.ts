@@ -75,7 +75,6 @@ export type FaqItem = {
 
 export type SocialLink = {
   label: string;
-  href: string;
 };
 
 export const contactDetails = {
@@ -88,10 +87,10 @@ export const contactDetails = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: 'Facebook', href: '#' },
-  { label: 'Instagram', href: '#' },
-  { label: 'TikTok', href: '#' },
-  { label: 'Yelp', href: '#' },
+  { label: 'Facebook' },
+  { label: 'Instagram' },
+  { label: 'TikTok' },
+  { label: 'Yelp' },
 ];
 
 export const benefits: Benefit[] = [

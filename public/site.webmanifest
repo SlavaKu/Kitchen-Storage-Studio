@@ -1,0 +1,10 @@
+{
+  "name": "Kitchen & Storage Studio",
+  "short_name": "Kitchen Up",
+  "start_url": "/Kitchen-Storage-Studio/",
+  "scope": "/Kitchen-Storage-Studio/",
+  "display": "browser",
+  "background_color": "#f8f4ed",
+  "theme_color": "#f8f4ed",
+  "lang": "en"
+}

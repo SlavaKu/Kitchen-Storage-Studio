@@ -8,6 +8,12 @@ export function NotFoundPage() {
   const homeHref = new URL(import.meta.env.BASE_URL, window.location.origin).toString();
 
   useEffect(() => {
+    const robotsMeta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+
+    if (robotsMeta) {
+      robotsMeta.content = 'noindex, follow';
+    }
+
     document.title = 'Page Not Found | Kitchen Up';
   }, []);
 

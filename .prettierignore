@@ -2,5 +2,6 @@ dist
 node_modules
 .agents
 .codex-edge-profile
+public/*.svg
 package-lock.json
 pnpm-lock.yaml

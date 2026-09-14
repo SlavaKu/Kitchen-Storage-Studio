@@ -45,13 +45,9 @@ export function SiteFooter() {
             </a>
             <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 lg:justify-end">
               {socialLinks.map((link) => (
-                <a
-                  className="transition hover:text-white"
-                  href={link.href}
-                  key={link.label}
-                >
+                <span className="transition hover:text-white" key={link.label}>
                   {link.label}
-                </a>
+                </span>
               ))}
             </div>
           </div>
