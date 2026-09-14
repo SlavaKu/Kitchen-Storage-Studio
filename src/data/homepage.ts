@@ -93,7 +93,6 @@ export const socialLinks: SocialLink[] = [
   { label: 'Facebook', href: '#', icon: 'facebook' },
   { label: 'Instagram', href: '#', icon: 'instagram' },
   { label: 'TikTok', href: '#', icon: 'tiktok' },
-  { label: 'Yelp', href: '#', icon: 'yelp' },
 ];
 
 export const benefits: Benefit[] = [
