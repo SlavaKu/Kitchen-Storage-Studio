@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import { SocialIcon } from '@/components/icons/SocialIcon';
 import { Container } from '@/components/ui/Container';
 import { contactDetails, socialLinks } from '@/data/homepage';
 import { primaryNavigation } from '@/data/navigation';
@@ -43,11 +44,16 @@ export function SiteFooter() {
             >
               {contactDetails.emailLabel}
             </a>
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 lg:justify-end">
+            <div className="mt-6 flex flex-wrap gap-3 lg:justify-end">
               {socialLinks.map((link) => (
-                <span className="transition hover:text-white" key={link.label}>
-                  {link.label}
-                </span>
+                <a
+                  aria-label={link.label}
+                  className="grid size-10 place-items-center rounded-full text-white/74 transition duration-medium hover:-translate-y-0.5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  href={link.href}
+                  key={link.label}
+                >
+                  <SocialIcon name={link.icon} />
+                </a>
               ))}
             </div>
           </div>

@@ -13,6 +13,7 @@ import kitchenStoryBackground05 from '@/assets/kitchen-backgrounds/custom-kitche
 import kitchenStoryBackground06 from '@/assets/kitchen-backgrounds/kitchen-cabinet-process-story-06-updated.webp';
 import kitchenStoryBackground07 from '@/assets/kitchen-backgrounds/free-kitchen-estimate-cabinet-installation-story-07.webp';
 import type { LineIconName } from '@/components/icons/LineIcon';
+import type { SocialIconName } from '@/components/icons/SocialIcon';
 
 export type Benefit = {
   icon: LineIconName;
@@ -74,6 +75,8 @@ export type FaqItem = {
 };
 
 export type SocialLink = {
+  href: string;
+  icon: SocialIconName;
   label: string;
 };
 
@@ -87,10 +90,10 @@ export const contactDetails = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: 'Facebook' },
-  { label: 'Instagram' },
-  { label: 'TikTok' },
-  { label: 'Yelp' },
+  { label: 'Facebook', href: '#', icon: 'facebook' },
+  { label: 'Instagram', href: '#', icon: 'instagram' },
+  { label: 'TikTok', href: '#', icon: 'tiktok' },
+  { label: 'Yelp', href: '#', icon: 'yelp' },
 ];
 
 export const benefits: Benefit[] = [
