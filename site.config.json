@@ -1,8 +1,9 @@
 {
   "siteName": "Kitchen Up",
   "legalName": "Kitchen & Storage Studio",
-  "siteUrl": "https://slavaku.github.io",
-  "basePath": "/Kitchen-Storage-Studio/",
+  "siteUrl": "https://getkitchenup.com",
+  "basePath": "/",
+  "customDomain": "getkitchenup.com",
   "language": "en",
   "locale": "en_US",
   "title": "Kitchen & Storage Studio | Kitchen Cabinet Design",

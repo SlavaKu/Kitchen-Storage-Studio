@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slavaku.github.io/Kitchen-Storage-Studio/sitemap.xml
+Sitemap: https://getkitchenup.com/sitemap.xml

@@ -10,8 +10,8 @@ No new content pages were created. Visible page copy and approved layout were no
 
 - Framework: React 19, React Router, Vite, TypeScript, Tailwind CSS.
 - Deployment target: GitHub Pages.
-- Current production URL: `https://slavaku.github.io/Kitchen-Storage-Studio/`.
-- Current base path: `/Kitchen-Storage-Studio/`.
+- Current production URL: `https://getkitchenup.com/`.
+- Current base path: `/`.
 - Central configuration: `site.config.json`.
 - Build flow: `npm run build` / `pnpm run build` generates SEO files, builds Vite assets, and creates `dist/404.html`.
 
@@ -43,7 +43,7 @@ No new content pages were created. Visible page copy and approved layout were no
 
 - `User-agent: *`
 - `Allow: /`
-- `Sitemap: https://slavaku.github.io/Kitchen-Storage-Studio/sitemap.xml`
+- `Sitemap: https://getkitchenup.com/sitemap.xml`
 
 No crawler-specific blocks were added. The configuration does not intentionally block Googlebot, Bingbot, OAI-SearchBot, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User, or other legitimate crawlers.
 
@@ -51,7 +51,7 @@ No crawler-specific blocks were added. The configuration does not intentionally 
 
 `public/sitemap.xml` includes only the real canonical one-page URL:
 
-- `https://slavaku.github.io/Kitchen-Storage-Studio/`
+- `https://getkitchenup.com/`
 
 It does not include anchors, the custom 404 page, fake service pages, city pages, or development URLs.
 
@@ -136,8 +136,8 @@ Further accessibility work that changes UI behavior or copy should be reviewed v
 
 When a real custom domain is connected, update the centralized values in `site.config.json`:
 
-- Change `siteUrl` from `https://slavaku.github.io` to the real production origin.
-- Change `basePath` from `/Kitchen-Storage-Studio/` to `/` if the custom domain serves the site from the root.
+- `siteUrl` is set to the real production origin: `https://getkitchenup.com`.
+- `basePath` is set to `/` for the custom domain root.
 - Confirm `lastModified` reflects the meaningful launch/update date.
 
 These values drive:
@@ -157,7 +157,7 @@ GitHub Pages domain setup may also require:
 - DNS records at the domain provider.
 - HTTPS enforcement after GitHub provisions the certificate.
 
-Do not add `CNAME` until the final domain is known.
+The final custom domain is known; keep `public/CNAME` set to `getkitchenup.com`.
 
 ## Manual Steps After Domain Connection
 

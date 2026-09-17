@@ -31,6 +31,7 @@ const files = new Map([
       2,
     )}\n`,
   ],
+  [resolve('public/CNAME'), `${siteConfig.customDomain}\n`],
 ]);
 
 for (const [path, content] of files) {

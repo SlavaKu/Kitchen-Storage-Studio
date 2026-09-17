@@ -44,7 +44,10 @@ jobs:
         run: |
           test -f dist/index.html
           test -f dist/404.html
-          grep -q '/Kitchen-Storage-Studio/assets/' dist/index.html
+          test -f dist/CNAME
+          grep -q 'getkitchenup.com' dist/CNAME
+          grep -q '/assets/' dist/index.html
+          ! grep -q '/Kitchen-Storage-Studio/' dist/index.html
           ! grep -q '/src/main.tsx' dist/index.html
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
