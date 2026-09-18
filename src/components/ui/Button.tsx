@@ -6,6 +6,7 @@ import { cn } from '@/utils/cn';
 type ButtonProps = {
   children: React.ReactNode;
   className?: string;
+  disabled?: boolean;
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   variant?: ComponentVariant;
@@ -28,6 +29,7 @@ const sizes: Record<ComponentSize, string> = {
 export function Button({
   children,
   className,
+  disabled = false,
   href,
   onClick,
   size = 'md',
@@ -39,6 +41,7 @@ export function Button({
     'inline-flex items-center justify-center rounded-full font-semibold uppercase tracking-[0.14em] transition duration-medium ease-refined focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
     variants[variant],
     sizes[size],
+    disabled && 'cursor-not-allowed opacity-70 hover:translate-y-0 hover:shadow-soft',
     className,
   );
 
@@ -59,7 +62,7 @@ export function Button({
   }
 
   return (
-    <button className={buttonClassName} type={type} onClick={onClick}>
+    <button className={buttonClassName} disabled={disabled} type={type} onClick={onClick}>
       {children}
     </button>
   );

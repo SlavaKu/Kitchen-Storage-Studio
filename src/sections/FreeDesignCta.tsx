@@ -1,11 +1,51 @@
+import { useState } from 'react';
+
 import { Reveal } from '@/components/motion/Reveal';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Input, Textarea } from '@/components/ui/FormControls';
 
+const basinEndpoint = 'https://usebasin.com/f/369f7e771fa5';
+
 export function FreeDesignCta() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>(
+    'idle',
+  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setIsSubmitting(true);
+    setSubmissionStatus('idle');
+
+    try {
+      const response = await fetch(basinEndpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Basin submission failed.');
+      }
+
+      form.reset();
+      setSubmissionStatus('success');
+    } catch {
+      setSubmissionStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -31,6 +71,14 @@ export function FreeDesignCta() {
               className="grid gap-4 rounded-panel border border-white/18 bg-surface p-5 shadow-soft sm:p-6"
               onSubmit={handleSubmit}
             >
+              <input
+                aria-hidden="true"
+                autoComplete="off"
+                className="hidden"
+                name="_gotcha"
+                tabIndex={-1}
+                type="text"
+              />
               <div className="grid gap-4 sm:grid-cols-2">
                 <Input
                   autoComplete="name"
@@ -78,7 +126,21 @@ export function FreeDesignCta() {
                 <p className="text-xs leading-6 text-muted">
                   Photos and uploads can be connected in a later phase.
                 </p>
-                <Button type="submit">Get My Free Estimate</Button>
+                <Button disabled={isSubmitting} type="submit">
+                  {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
+                </Button>
+              </div>
+              <div aria-live="polite" className="min-h-6" role="status">
+                {submissionStatus === 'success' ? (
+                  <p className="text-sm font-semibold leading-6 text-primary">
+                    Thank you! We received your request and will contact you shortly.
+                  </p>
+                ) : null}
+                {submissionStatus === 'error' ? (
+                  <p className="text-sm font-semibold leading-6 text-primary">
+                    Sorry, something went wrong. Please try again or call us directly.
+                  </p>
+                ) : null}
               </div>
             </form>
           </div>
