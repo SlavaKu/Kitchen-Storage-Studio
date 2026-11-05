@@ -18,7 +18,7 @@ const files = new Map([
     resolve('public/site.webmanifest'),
     `${JSON.stringify(
       {
-        name: siteConfig.legalName,
+        name: siteConfig.siteName,
         short_name: siteConfig.siteName,
         start_url: siteConfig.basePath,
         scope: siteConfig.basePath,

@@ -1,4 +1,4 @@
-# Kitchen & Storage Studio
+# Kitchen Up
 
 A modern React application for kitchen cabinet design and installation.
 

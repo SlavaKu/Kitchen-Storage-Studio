@@ -104,7 +104,7 @@ export function FreeDesignCta() {
                   id="lead-email"
                   label="Email (optional)"
                   name="email"
-                  placeholder="you@example.com"
+                  placeholder="Your email"
                   type="email"
                 />
                 <Input
@@ -123,9 +123,7 @@ export function FreeDesignCta() {
                 placeholder="Tell us a little about the kitchen you need."
               />
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs leading-6 text-muted">
-                  Photos and uploads can be connected in a later phase.
-                </p>
+                <p aria-hidden="true" className="text-xs leading-6 text-muted" />
                 <Button disabled={isSubmitting} type="submit">
                   {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
                 </Button>

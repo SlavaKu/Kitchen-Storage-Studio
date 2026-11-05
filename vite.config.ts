@@ -11,7 +11,6 @@ const structuredData = {
       '@type': 'Organization',
       '@id': `${canonicalUrl}#organization`,
       name: siteConfig.siteName,
-      legalName: siteConfig.legalName,
       url: canonicalUrl,
       telephone: siteConfig.telephone,
     },

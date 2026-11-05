@@ -14,7 +14,7 @@ export function SiteFooter() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.9fr_0.9fr] lg:items-start">
           <div>
-            <p className="font-serif text-3xl font-semibold">Kitchen & Storage Studio</p>
+            <p className="font-serif text-3xl font-semibold">Kitchen Up</p>
             <p className="mt-4 max-w-md text-sm leading-7 text-white/72">
               Kitchen cabinet design and installation with practical planning,
               approachable style, and a simple free estimate process.
@@ -38,12 +38,6 @@ export function SiteFooter() {
             >
               {contactDetails.phoneLabel}
             </a>
-            <a
-              className="block transition hover:text-white"
-              href={contactDetails.emailHref}
-            >
-              {contactDetails.emailLabel}
-            </a>
             <div className="mt-6 flex flex-wrap gap-3 lg:justify-end">
               {socialLinks.map((link) => (
                 <a
@@ -59,8 +53,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-12 border-t border-white/14 pt-7 text-sm text-white/58">
-          Copyright {new Date().getFullYear()} Kitchen & Storage Studio. All rights
-          reserved.
+          Copyright {new Date().getFullYear()} Kitchen Up. All rights reserved.
         </div>
       </Container>
     </footer>

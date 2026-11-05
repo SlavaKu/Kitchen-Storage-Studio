@@ -90,7 +90,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex shrink-0 items-center gap-2.5 lg:hidden">
           <a
-            aria-label="Call Kitchen and Storage Studio"
+            aria-label="Call Kitchen Up"
             className="grid size-10 place-items-center rounded-full border border-border bg-surface text-foreground shadow-soft transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             href={contactDetails.phoneHref}
           >

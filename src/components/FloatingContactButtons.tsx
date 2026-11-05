@@ -8,7 +8,7 @@ export function FloatingContactButtons() {
       className="fixed bottom-5 right-5 z-50 flex flex-col gap-3 sm:bottom-6 sm:right-6"
     >
       <a
-        aria-label="Call Kitchen and Storage Studio"
+        aria-label="Call Kitchen Up"
         className="quick-contact-button"
         href={contactDetails.phoneHref}
       >

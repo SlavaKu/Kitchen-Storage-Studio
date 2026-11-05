@@ -85,8 +85,6 @@ export const contactDetails = {
   phoneNumber: '+16504845564',
   phoneHref: 'tel:+16504845564',
   whatsappHref: 'https://wa.me/16504845564',
-  emailLabel: 'hello@example.com',
-  emailHref: 'mailto:hello@example.com',
 };
 
 export const socialLinks: SocialLink[] = [
@@ -268,6 +266,6 @@ export const faqs: FaqItem[] = [
   {
     question: 'Is installation included in the kitchen process?',
     answer:
-      'The site is prepared around a design-to-installation kitchen workflow. Final scheduling and scope can be confirmed when real project details are collected.',
+      'The kitchen process includes design, delivery, and installation. Scheduling and the scope of installation can be confirmed when we review your project details.',
   },
 ];

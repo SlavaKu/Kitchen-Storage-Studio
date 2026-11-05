@@ -79,7 +79,7 @@ Production HTML includes one JSON-LD graph with:
 - `WebPage`
 - `Service`
 
-The structured data uses only information already present or supported by the project: Kitchen Up, Kitchen & Storage Studio, the current URL, phone number, Bay Area wording, and kitchen cabinet design/installation service. No address, hours, ratings, reviews, social profiles, certifications, or invented claims were added.
+The structured data uses only information already present or supported by the project: Kitchen Up, the current URL, phone number, Bay Area wording, and kitchen cabinet design/installation service. The optional legalName field is omitted because a registered legal entity name has not been verified. No address, hours, ratings, reviews, social profiles, certifications, or invented claims were added.
 
 ## AI/Search Discoverability
 

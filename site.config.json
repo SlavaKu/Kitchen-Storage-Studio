@@ -1,12 +1,11 @@
 {
   "siteName": "Kitchen Up",
-  "legalName": "Kitchen & Storage Studio",
   "siteUrl": "https://getkitchenup.com",
   "basePath": "/",
   "customDomain": "getkitchenup.com",
   "language": "en",
   "locale": "en_US",
-  "title": "Kitchen & Storage Studio | Kitchen Cabinet Design",
+  "title": "Kitchen Up | Kitchen Cabinet Design",
   "description": "Kitchen cabinet design and installation with a free kitchen design process.",
   "themeColor": "#f8f4ed",
   "lastModified": "2026-09-14",
