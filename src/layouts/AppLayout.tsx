@@ -5,7 +5,16 @@ import { FloatingContactButtons } from '@/components/FloatingContactButtons';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export function AppLayout() {
-  const { hash } = useLocation();
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === '/' || /^\/privacy-policy\/?$/.test(pathname)) {
+      document.title =
+        pathname === '/'
+          ? 'Kitchen Up | Kitchen Cabinet Design'
+          : 'Privacy Policy | Kitchen Up';
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!hash) {
@@ -18,7 +27,7 @@ export function AppLayout() {
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [hash]);
+  }, [hash, pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from '@/layouts/AppLayout';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
 
 export const router = createBrowserRouter(
   [
@@ -13,6 +14,10 @@ export const router = createBrowserRouter(
         {
           index: true,
           element: <HomePage />,
+        },
+        {
+          path: 'privacy-policy',
+          element: <PrivacyPolicyPage />,
         },
         {
           path: '*',

@@ -54,6 +54,12 @@ export function SiteFooter() {
         </div>
         <div className="mt-12 border-t border-white/14 pt-7 text-sm text-white/58">
           Copyright {new Date().getFullYear()} Kitchen Up. All rights reserved.
+          <Link
+            className="mt-3 block w-fit underline underline-offset-4 transition hover:text-white"
+            to="/privacy-policy/"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </Container>
     </footer>

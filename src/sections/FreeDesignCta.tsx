@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Reveal } from '@/components/motion/Reveal';
 import { Button } from '@/components/ui/Button';
@@ -123,7 +124,17 @@ export function FreeDesignCta() {
                 placeholder="Tell us a little about the kitchen you need."
               />
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p aria-hidden="true" className="text-xs leading-6 text-muted" />
+                <p className="max-w-sm text-xs leading-6 text-muted">
+                  Kitchen Up uses the information you submit to respond to your inquiry
+                  and prepare your estimate. See our{' '}
+                  <Link
+                    className="font-semibold underline underline-offset-4 hover:text-primary"
+                    to="/privacy-policy/"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
                 <Button disabled={isSubmitting} type="submit">
                   {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
                 </Button>
