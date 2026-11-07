@@ -7,12 +7,19 @@ const siteConfig = JSON.parse(await readFile(configPath, 'utf8'));
 
 const canonicalUrl = new URL(siteConfig.basePath, siteConfig.siteUrl).toString();
 const sitemapUrl = new URL('sitemap.xml', canonicalUrl).toString();
+const sitemapEntries = [
+  { url: canonicalUrl, lastModified: siteConfig.lastModified },
+  {
+    url: new URL('privacy-policy/', canonicalUrl).toString(),
+    lastModified: siteConfig.privacyPolicy.lastModified,
+  },
+];
 
 const files = new Map([
   [resolve('public/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`],
   [
     resolve('public/sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>${canonicalUrl}</loc>\n    <lastmod>${siteConfig.lastModified}</lastmod>\n  </url>\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.map((entry) => `  <url>\n    <loc>${entry.url}</loc>\n    <lastmod>${entry.lastModified}</lastmod>\n  </url>`).join('\n')}\n</urlset>\n`,
   ],
   [
     resolve('public/site.webmanifest'),

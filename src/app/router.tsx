@@ -1,32 +1,23 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { AppLayout } from '@/layouts/AppLayout';
-import { HomePage } from '@/pages/HomePage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
+import { routes } from '@/app/routes';
 
-export const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <AppLayout />,
-      children: [
-        {
-          index: true,
-          element: <HomePage />,
-        },
-        {
-          path: 'privacy-policy',
-          element: <PrivacyPolicyPage />,
-        },
-        {
-          path: '*',
-          element: <NotFoundPage />,
-        },
-      ],
-    },
-  ],
-  {
-    basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
-  },
-);
+// Physical index files are aliases of the directory URLs rendered at build time.
+const basePath = import.meta.env.BASE_URL;
+if (
+  [`${basePath}index.html`, `${basePath}privacy-policy/index.html`].includes(
+    window.location.pathname,
+  )
+) {
+  window.history.replaceState(
+    window.history.state,
+    '',
+    window.location.pathname.replace(/index\.html$/, '') +
+      window.location.search +
+      window.location.hash,
+  );
+}
+
+export const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
+});

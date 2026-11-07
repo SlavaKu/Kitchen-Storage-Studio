@@ -33,6 +33,8 @@ export type Story = {
 };
 
 export type ServiceCategory = {
+  width: number;
+  height: number;
   title: string;
   summary: string;
   imageUrl: string;
@@ -52,6 +54,8 @@ export type ServiceSection = {
 };
 
 export type GalleryImage = {
+  width: number;
+  height: number;
   alt: string;
   imageUrl: string;
   position?: string;
@@ -157,22 +161,32 @@ export const kitchenGalleryGroups: GalleryGroup[] = [
     images: [
       {
         imageUrl: realKitchenProject01,
+        width: 1086,
+        height: 1448,
         alt: 'Real kitchen cabinet installation with white shaker cabinets and a bright countertop',
       },
       {
         imageUrl: realKitchenProject02,
+        width: 1086,
+        height: 1448,
         alt: 'Real kitchen project with white cabinets, open shelving, and finished cabinet storage',
       },
       {
         imageUrl: realKitchenProject03,
+        width: 1086,
+        height: 1448,
         alt: 'Real kitchen remodel with installed upper cabinets and a clean working layout',
       },
       {
         imageUrl: realKitchenProject04,
+        width: 1448,
+        height: 1086,
         alt: 'Real kitchen cabinet project with white cabinetry, backsplash, and practical counter space',
       },
       {
         imageUrl: realKitchenProject05,
+        width: 1086,
+        height: 1448,
         alt: 'Real completed kitchen installation with bright cabinets and modern storage details',
       },
     ],
@@ -184,36 +198,48 @@ export const kitchenStyles: ServiceCategory[] = [
     title: 'White Shaker',
     summary: 'A clean, familiar kitchen style with bright cabinets and simple hardware.',
     imageUrl: kitchenDesignOption01,
+    width: 1374,
+    height: 1145,
     alt: 'White shaker kitchen cabinet design option with bright counters',
   },
   {
     title: 'Modern Flat Panel',
     summary: 'Smooth cabinet fronts for a calm modern kitchen.',
     imageUrl: kitchenDesignOption02,
+    width: 1374,
+    height: 1145,
     alt: 'Modern flat panel kitchen cabinet design with clean finishes',
   },
   {
     title: 'Warm Wood',
     summary: 'Natural tones that make a practical kitchen feel welcoming.',
     imageUrl: kitchenDesignOption03,
+    width: 1374,
+    height: 1145,
     alt: 'Warm wood kitchen cabinet option with natural cabinet tones',
   },
   {
     title: 'Two-Tone',
     summary: 'Balanced contrast for a kitchen that feels custom and approachable.',
     imageUrl: kitchenDesignOption04,
+    width: 1400,
+    height: 933,
     alt: 'Two tone kitchen cabinet design option with balanced contrast',
   },
   {
     title: 'Compact Apartment',
     summary: 'Efficient cabinet planning for smaller kitchens.',
     imageUrl: kitchenDesignOption05,
+    width: 1400,
+    height: 933,
     alt: 'Compact apartment kitchen cabinet option for smaller spaces',
   },
   {
     title: 'Light Contemporary',
     summary: 'Bright finishes, clean counters, and everyday ease.',
     imageUrl: kitchenDesignOption06,
+    width: 1400,
+    height: 933,
     alt: 'Light contemporary kitchen cabinet design with bright finishes',
   },
 ];

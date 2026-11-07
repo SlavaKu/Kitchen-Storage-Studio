@@ -30,6 +30,8 @@ export function HeroSection() {
           key={slide.imageUrl}
         >
           <img
+            width={1672}
+            height={941}
             aria-hidden="true"
             alt=""
             className="hero-image-backdrop h-full w-full object-cover"
@@ -39,6 +41,8 @@ export function HeroSection() {
             style={{ objectPosition: slide.position }}
           />
           <img
+            width={1672}
+            height={941}
             alt={slide.eyebrow}
             className={cn(
               'hero-image h-full w-full object-cover',

@@ -115,10 +115,12 @@ export function KitchenStylesSection() {
                   }
                 >
                   <img
+                    width={style.width}
+                    height={style.height}
                     alt={style.alt}
                     className="h-full w-full object-contain"
                     decoding="async"
-                    loading={isVisible ? 'eager' : 'lazy'}
+                    loading="lazy"
                     src={style.imageUrl}
                     style={{ objectPosition: style.position ?? 'center' }}
                   />

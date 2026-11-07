@@ -152,6 +152,8 @@ export function EditorialGallery({
 
               return (
                 <button
+                  aria-hidden={!isVisible}
+                  tabIndex={isVisible ? 0 : -1}
                   aria-label={`Show ${image.alt}`}
                   className={cn(
                     'coverflow-item group',
@@ -174,10 +176,12 @@ export function EditorialGallery({
                   }}
                 >
                   <img
+                    width={image.width}
+                    height={image.height}
                     alt={image.alt}
                     className="h-full w-full object-cover"
                     decoding="async"
-                    loading={isVisible ? 'eager' : 'lazy'}
+                    loading="lazy"
                     src={image.imageUrl}
                     style={{ objectPosition: image.position ?? 'center' }}
                   />

@@ -10,6 +10,8 @@ export function StoryImageSection({ story }: StoryImageSectionProps) {
     <section className="story-section relative z-0 h-[240vh] bg-background" id={story.id}>
       <div className="story-sticky sticky top-[72px] z-0 h-[calc(110svh-72px)] overflow-hidden">
         <img
+          width={1672}
+          height={941}
           aria-hidden="true"
           alt=""
           className="story-image-backdrop h-full w-full object-cover"
@@ -19,6 +21,8 @@ export function StoryImageSection({ story }: StoryImageSectionProps) {
           style={{ objectPosition: story.position }}
         />
         <img
+          width={1672}
+          height={941}
           alt={story.alt}
           className="story-image h-full w-full object-cover"
           decoding="async"

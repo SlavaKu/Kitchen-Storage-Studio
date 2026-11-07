@@ -52,6 +52,8 @@ export function FaqPreview() {
                       </button>
                     </h3>
                     <div
+                      aria-hidden={!isOpen}
+                      inert={!isOpen}
                       aria-labelledby={buttonId}
                       className={cn(
                         'grid transition-[grid-template-rows] duration-medium ease-refined',

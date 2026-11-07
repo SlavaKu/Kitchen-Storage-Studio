@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import kitchenUpLogo from '@/assets/kitchen-up-logo.png';
+import kitchenUpLogo from '@/assets/kitchen-up-logo.webp';
 import { LineIcon } from '@/components/icons/LineIcon';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
@@ -50,6 +50,8 @@ export function SiteHeader() {
           onClick={() => setIsMenuOpen(false)}
         >
           <img
+            width={750}
+            height={250}
             alt="Kitchen Up Cabinets Design Installation"
             className="h-10 w-auto max-w-[180px] object-contain transition group-hover:-translate-y-0.5 sm:h-12 sm:max-w-[230px] lg:h-14 lg:max-w-[250px]"
             src={kitchenUpLogo}

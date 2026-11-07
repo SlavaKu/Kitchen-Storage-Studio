@@ -1,195 +1,136 @@
-# SEO Technical Audit
+# Kitchen Up technical SEO audit — Phase 3
 
-## Scope
+Audit date: November 6, 2026. Production: https://getkitchenup.com. Repository: SlavaKu/Kitchen-Storage-Studio, branch main.
 
-Audited the existing Kitchen Up one-page React/Vite website for crawlability, search discoverability, AI discoverability, performance readiness, production hygiene, accessibility basics, routing, metadata, structured data, image handling, and GitHub Pages deployment behavior.
+## Initial findings
 
-No new content pages were created. Visible page copy and approved layout were not intentionally changed.
+Production HTTP requests before editing confirmed:
 
-## Current Production Configuration
+| Resource                           | Initial result                                                                                                  |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Homepage                           | HTTP 200, correct HTTPS non-www canonical, 2,610-byte HTML shell with an empty React root                       |
+| Privacy Policy                     | HTTP 200 on direct access, correct `/privacy-policy/` canonical, 1,555-byte HTML shell with an empty React root |
+| robots.txt                         | HTTP 200; allows crawling and points at the correct sitemap                                                     |
+| sitemap.xml                        | HTTP 200; listed only the homepage and an older modification date                                               |
+| HTTP homepage                      | Redirected to the HTTPS non-www homepage                                                                        |
+| HTTPS www homepage                 | Redirected to the HTTPS non-www homepage                                                                        |
+| Legacy GitHub Pages repository URL | Redirected to the production homepage                                                                           |
 
-- Framework: React 19, React Router, Vite, TypeScript, Tailwind CSS.
-- Deployment target: GitHub Pages.
-- Current production URL: `https://getkitchenup.com/`.
-- Current base path: `/`.
-- Central configuration: `site.config.json`.
-- Build flow: `npm run build` / `pnpm run build` generates SEO files, builds Vite assets, and creates `dist/404.html`.
+Existing strengths were retained: Kitchen Up branding, English language and viewport metadata, JSON-LD for Organization/WebSite/WebPage/Service on the homepage, root-relative asset paths, a working Privacy Policy directory entry, GitHub Actions Pages deployment, CNAME, no tracking scripts or external font downloads, high-priority/eager first hero image, compressed WebP kitchen photography, descriptive image alternatives, labelled form fields, responsive layouts, and reduced-motion styling.
 
-## Problems Found
+Problems identified: both pages depended on JavaScript for all content; the policy reused the homepage description; client navigation updated only the title and could leave a 404's noindex behind; the sitemap omitted the policy; social metadata had no preview image; image dimensions were absent; below-fold galleries eagerly loaded their initial slides; and the transparent logo was a 2172 × 724 PNG of 925,187 bytes. Invisible gallery buttons remained in keyboard/accessibility navigation, and collapsed FAQ content was still exposed to assistive technology.
 
-- No committed `robots.txt`.
-- No committed `sitemap.xml`.
-- Canonical URL, Open Graph metadata, Twitter/X metadata, and JSON-LD were missing from production HTML.
-- Site URL/base path values were not centralized for future custom-domain migration.
-- GitHub Pages 404 fallback existed, but `404.html` did not explicitly receive `noindex`.
-- Footer social labels used placeholder `#` links without verified destination URLs.
-- Static favicon/manifest assets were missing.
-- Production SEO artifacts were not generated from a maintainable configuration.
+## Implemented changes
 
-## Changes Made
+### Static content and routing
 
-- Added `site.config.json` as the centralized source for current production URL, base path, site name, metadata, language, theme color, telephone, service name, and last modified date.
-- Updated `vite.config.ts` to read `site.config.json`, use the configured base path, and inject production head metadata.
-- Added generated `robots.txt`, `sitemap.xml`, and `site.webmanifest` via `scripts/generate-seo-files.mjs`.
-- Updated the build script to generate SEO files before the production build.
-- Updated `scripts/create-pages-404.mjs` so generated `dist/404.html` receives `noindex, follow`.
-- Added a static SVG favicon.
-- Removed unverified placeholder social `href="#"` destinations while preserving visible labels.
-- Removed unused hero slide placeholder source fields.
+The production build now compiles a temporary Node renderer using Vite's existing SSR support and renders the same React route tree used by the browser. It writes meaningful HTML to `dist/index.html`, `dist/privacy-policy/index.html`, and `dist/404.html`. No runtime server, paid service, crawler detection, or new package is needed. The temporary renderer stays in ignored `node_modules/.tmp/`, outside the published build.
 
-## robots.txt
+The browser hydrates the existing markup with React's `hydrateRoot`; development shells still use `createRoot`. Carousels, FAQ, scrolling, menu, reveal effects, and form handling use their existing React components. A real policy directory supports HTTP 200 direct visits and refreshes on GitHub Pages. Unknown URLs receive the prerendered custom 404 with noindex and no canonical.
 
-`public/robots.txt` allows public crawling and references the sitemap:
+Reveal animations are enabled by an early `js` class; without JavaScript, prerendered content remains readable. A noscript notice offers the business phone and hides the unusable JavaScript form, preventing a native GET submission from putting contact information in a URL. JavaScript-enabled form behavior is unchanged.
 
-- `User-agent: *`
-- `Allow: /`
-- `Sitemap: https://getkitchenup.com/sitemap.xml`
+### Metadata and crawlability
 
-No crawler-specific blocks were added. The configuration does not intentionally block Googlebot, Bingbot, OAI-SearchBot, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User, or other legitimate crawlers.
+Shared route metadata drives both initial HTML and client navigation, including canonical, robots, description, Open Graph, Twitter/X, and structured data. Navigating away from a 404 restores indexability for real pages. Both actual public routes appear in the sitemap; no fragment URLs, location pages, fake URLs, or legacy repository URLs are added.
 
-## sitemap.xml
+| Route              | Title                                                  | Description                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/`                | Bay Area Kitchen Cabinets & Installation \| Kitchen Up | San Francisco Bay Area kitchen cabinets, design, and installation. Serving Mountain View, Palo Alto, Sunnyvale, and nearby communities. Get a free estimate. |
+| `/privacy-policy/` | Privacy Policy \| Kitchen Up                           | Learn how Kitchen Up handles estimate requests, personal information, form processing, and privacy inquiries on getkitchenup.com.                            |
 
-`public/sitemap.xml` includes only the real canonical one-page URL:
+City mentions are limited to natural metadata wording. There are no new keyword paragraphs, hidden location lists, landing pages, or doorway pages. Robots, canonical domain, CNAME, and existing working redirects are preserved. No DNS, Cloudflare, verification token, analytics, or third-party script has been added.
 
-- `https://getkitchenup.com/`
+### Structured data
 
-It does not include anchors, the custom 404 page, fake service pages, city pages, or development URLs.
+Both pages have truthful Organization, WebSite, and route-specific WebPage nodes. The homepage retains its Service node for kitchen cabinet design and installation in the Bay Area. The Organization now references the real optimized logo. The policy is not misrepresented as a service page.
 
-`lastmod` is controlled manually through `site.config.json` and should only be changed for meaningful page updates.
+No legalName, physical address, showroom, hours, prices, social profiles, reviews, ratings, licenses, staff biographies, or invented business claims are added. LocalBusiness rich-result markup is deliberately omitted: Google's documentation requires a physical address for that feature, and no verified public address is supplied. Breadcrumb and FAQ rich-result markup are not necessary for this two-page site. Valid generic schema does not guarantee a Google rich result.
 
-## Canonical And Metadata
+### Images and performance
 
-Production HTML now includes:
+The logo is now a transparent, losslessly encoded WebP at 750 × 250, adequate for its existing displayed sizes at high pixel density: **100,720 bytes**, down from **925,187 bytes** (about **89.1% smaller**). The original PNG remains in source for future use; the application imports the smaller file. The logo's aspect ratio, transparency, composition, and CSS display size are preserved.
 
-- `meta name="robots" content="index, follow"` on the index page.
-- Canonical URL from `site.config.json`.
-- Theme color.
-- Open Graph type, site name, locale, title, description, and URL.
-- Twitter/X summary card metadata.
-- Favicon and web manifest links.
+All original kitchen photographs remain byte-for-byte unchanged. The social preview is an exact copy of the existing 1672 × 941 first hero photograph at `/social/kitchen-up-kitchen.webp`, with absolute production Open Graph/Twitter image URLs and descriptive alternative text. The existing WebP photographs range from roughly 64–225 KB, so further recompression or new crops were not justified.
 
-The 404 HTML keeps the canonical URL pointing to the homepage but uses `noindex, follow`.
+Rendered images now have intrinsic dimensions. Below-fold gallery/style images use lazy loading; the first hero stays eager and high priority, and the header logo is eager. Existing fixed carousel/story boxes, object positioning, animations, and system/Georgia font stacks are retained. No additional render-blocking font or third-party script is introduced. Prerendered image discovery and the smaller logo reduce avoidable startup work; actual LCP/INP/CLS outcomes require measurement in real browsers/field data.
 
-## Structured Data
+### Accessibility and preservation
 
-Production HTML includes one JSON-LD graph with:
+Each route keeps one H1 and the existing heading hierarchy. Hidden gallery buttons are removed from the keyboard/accessibility sequence. Collapsed FAQ panels use aria-hidden and inert while retaining their visual animation. Existing labels, focus styles, phone links, navigation, social icons, and responsive design remain.
 
-- `Organization`
-- `WebSite`
-- `WebPage`
-- `Service`
+The Basin endpoint, form component, field names, required/optional validation, spam honeypot, submission logic, and success/error states are unchanged. Privacy Policy text and date, footer, floating contact buttons, social link values, lockfile, all original images, and CNAME are unchanged.
 
-The structured data uses only information already present or supported by the project: Kitchen Up, the current URL, phone number, Bay Area wording, and kitchen cabinet design/installation service. The optional legalName field is omitted because a registered legal entity name has not been verified. No address, hours, ratings, reviews, social profiles, certifications, or invented claims were added.
+## Verification design
 
-## AI/Search Discoverability
+`pnpm run build` runs `scripts/verify-seo.mjs` after prerendering. It fails on missing content, duplicate H1/IDs/canonicals/metadata, incorrect route descriptions or URLs, malformed JSON-LD, unsupported business claims, broken local resource or fragment links, missing image alternatives/dimensions, missing form fields, changed hero priority, sitemap mismatch, incorrect 404 indexing, or missing CNAME. The deployment workflow additionally requires the policy artifact. The SSR bundle is not published.
 
-The site now has standards-based machine-readable signals:
+Local browser results are recorded below. Deployment confirmation is reported separately after pushing. No successful indexing, Search Console submission, ownership verification, or Core Web Vitals score is implied by a successful build.
 
-- Crawlable production HTML.
-- Real internal links and anchor navigation.
-- Central canonical URL.
-- Sitemap.
-- Robots file.
-- JSON-LD entity graph.
-- Machine-readable telephone links.
-- Accurate image alt text already present in source data.
+## Owner actions and limitations
 
-No hidden AI text, keyword blocks, cloaking, doorway pages, or `llms.txt` were added.
+See [SEARCH-ENGINE-SETUP.md](SEARCH-ENGINE-SETUP.md) for exact Google Search Console/Cloudflare TXT verification, sitemap, URL Inspection, indexing requests, Bing verification/import, and monitoring instructions. Search account access and DNS ownership verification are manual owner actions. Search engines control indexing and ranking.
 
-## Performance And Images
+The package/repository identifier `kitchen-storage-studio`, GitHub remote, and workflow guard against old repository asset paths intentionally remain internal. No production canonical or sitemap uses the old repository URL. GitHub Pages controls HTTP status and redirects; this change does not install server-side redirect rules.
 
-- Existing images are already WebP except the logo PNG and original 404 source PNG.
-- The custom 404 page uses an optimized WebP derivative.
-- The first hero image remains eager/high priority for LCP; below-the-fold images use lazy loading.
-- CSS and JS bundle sizes remain modest for the current interactive one-page site.
-- No visual assets were removed and no visible image composition was intentionally changed.
-- Lighthouse was not available in the local environment and was not installed just to obtain a synthetic score.
-- Production build output observed after this task: CSS about 34.91 kB, JS about 319.43 kB, generated HTML about 3.14 kB before gzip.
+## Primary references
 
-Manual future opportunity: create a dedicated Open Graph preview image and consider a smaller optimized logo asset if visual parity can be preserved.
+- [Google JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+- [React hydration](https://react.dev/reference/react-dom/client/hydrateRoot)
+- [Vite SSR and static prerendering](https://vite.dev/guide/ssr)
+- [Google LocalBusiness requirements](https://developers.google.com/search/docs/appearance/structured-data/local-business)
 
-## Accessibility And Semantics
+## Local validation results
 
-- Existing landmarks include header, nav, main, sections, and footer.
-- Form fields have labels and names.
-- Navigation and CTAs use real links.
-- Carousel and FAQ controls use buttons with accessible labels/expanded state.
-- Placeholder social links were changed to non-link labels because no verified URLs are available.
+- Final client/SSR build and automated SEO output verification passed.
+- Format check and ESLint passed.
+- Static preview returned HTTP 200 for both canonical pages, HTTP 301 for the policy path without a slash, and HTTP 404 for an unknown path.
+- Initial generated HTML contains 56,900 bytes for the homepage, 23,716 bytes for the policy, and 10,203 bytes for the 404, each with one H1.
+- Client JavaScript is approximately 335 KB (105 KB gzip); CSS is approximately 36 KB (7.93 KB gzip). The added hydration/metadata behavior slightly increases JavaScript; no runtime framework or dependency was added. The much smaller logo and earlier content/image discovery are the primary startup improvements.
+- Desktop baseline comparison confirmed identical heading/logo rectangles, H1 text, and main-page text.
+- Browser checks covered 1440px desktop, 768px tablet, and 390px mobile overrides, plus physical index-file aliases. Real document widths at those sizes had no horizontal overflow.
+- Hero controls, both galleries, keyboard FAQ activation, mobile menu/contact navigation, policy links, direct policy refresh, and 404-to-home metadata recovery worked.
+- No React hydration warnings, duplicate H1, missing image alternatives/dimensions, or application console errors were observed.
+- Source comparison confirmed the entire Basin form component and Privacy Policy component unchanged, along with footer, floating contact controls, social link data, CNAME, lockfile, and original images. No live lead was submitted to Basin.
+- No owner search-account verification, sitemap submission, or indexing request was performed.
 
-Further accessibility work that changes UI behavior or copy should be reviewed visually before implementation.
+## Files changed or created
 
-## Custom 404
+- `.github/workflows/deploy-pages.yml`
+- `README.md`
+- `SEARCH-ENGINE-SETUP.md`
+- `SEO-TECHNICAL-AUDIT.md`
+- `index.html`
+- `package.json`
+- `public/sitemap.xml`
+- `public/social/kitchen-up-kitchen.webp`
+- `public/social/kitchen-up-logo.webp`
+- `scripts/create-pages-404.mjs`
+- `scripts/generate-seo-files.mjs`
+- `scripts/prerender.mjs`
+- `scripts/verify-seo.mjs`
+- `site.config.json`
+- `src/app/router.tsx`
+- `src/app/routes.tsx`
+- `src/assets/kitchen-up-logo.webp`
+- `src/components/PageSeo.tsx`
+- `src/components/SiteHeader.tsx`
+- `src/components/gallery/EditorialGallery.tsx`
+- `src/data/homepage.ts`
+- `src/data/seo.ts`
+- `src/entry-server.tsx`
+- `src/layouts/AppLayout.tsx`
+- `src/main.tsx`
+- `src/pages/NotFoundPage.tsx`
+- `src/sections/FaqPreview.tsx`
+- `src/sections/HeroSection.tsx`
+- `src/sections/KitchenStylesSection.tsx`
+- `src/sections/StoryImageSection.tsx`
+- `src/styles/global.css`
+- `vite.config.ts`
 
-- Existing React 404 page is preserved.
-- Build creates `dist/404.html` for GitHub Pages.
-- Unknown routes render the custom 404 page.
-- 404 is not included in the sitemap.
-- Generated `404.html` uses `noindex, follow`.
+The old copy-only `scripts/create-pages-404.mjs` is replaced by `scripts/prerender.mjs`; policy direct-access and custom 404 output are retained.
 
-## Security And Production Hygiene
+## Measurement limits
 
-- No private secrets, API keys, or credentials were found in public source files during the audit.
-- No development URLs were added to production metadata, robots, sitemap, or structured data.
-- Existing public telephone and placeholder email are visible site data, not private secrets.
-
-## Custom Domain Readiness
-
-When a real custom domain is connected, update the centralized values in `site.config.json`:
-
-- `siteUrl` is set to the real production origin: `https://getkitchenup.com`.
-- `basePath` is set to `/` for the custom domain root.
-- Confirm `lastModified` reflects the meaningful launch/update date.
-
-These values drive:
-
-- Vite base path.
-- Canonical URL.
-- Sitemap URL.
-- robots sitemap reference.
-- Open Graph URL.
-- Structured-data URLs and entity IDs.
-- Web manifest start URL and scope.
-
-GitHub Pages domain setup may also require:
-
-- Repository Pages custom domain configuration.
-- A `public/CNAME` file containing the real custom domain.
-- DNS records at the domain provider.
-- HTTPS enforcement after GitHub provisions the certificate.
-
-The final custom domain is known; keep `public/CNAME` set to `getkitchenup.com`.
-
-## Manual Steps After Domain Connection
-
-- Verify the domain in Google Search Console.
-- Submit the sitemap in Google Search Console.
-- Verify the site in Bing Webmaster Tools.
-- Submit the sitemap in Bing Webmaster Tools.
-- Set up or update Google Business Profile if appropriate.
-- Set up or update Bing Places if appropriate.
-- Test production structured data with Google Rich Results Test or Schema Markup Validator.
-- Test Open Graph/Twitter cards with production URLs.
-- Monitor indexing, crawl stats, and coverage after launch.
-- Add analytics only if desired and with an approved privacy approach.
-- Consider IndexNow only after deciding on a supported submission workflow.
-
-## Optional Future Content Recommendations
-
-These were not implemented because they would change visible content or add pages:
-
-- Replace placeholder footer email and social labels with verified business destinations.
-- Add a concise visible service-area section only if the business wants that content on the page.
-- Add real project case studies or service pages only when there is approved visible content.
-- Add a dedicated social sharing image that matches the brand.
-- Add verified business address/hours to the site and structured data only if the business wants them public.
-
-## Validation Checklist
-
-- Production build passed on 2026-09-14.
-- Production preview returned `200` for homepage, invalid SPA URL, `robots.txt`, and `sitemap.xml`.
-- Browser checks covered desktop 1440px, tablet 768px, and mobile 390px.
-- Browser checks found no horizontal overflow, no duplicate IDs, and no application console errors.
-- JSON-LD production script parsed as valid JSON.
-- Sitemap contains only the canonical one-page URL.
-- Robots allows public crawling and references the sitemap.
-- Custom 404 rendered in production preview, loaded its image, and returned to the homepage through the back-home link.
+The public mobile PageSpeed API request returned HTTP 429 (quota exceeded), so no Lighthouse/PageSpeed score or CrUX LCP/INP/CLS field metrics were obtained. No performance score or Core Web Vitals pass is claimed. Recheck PageSpeed Insights and the verified Search Console Core Web Vitals report after deployment when data is available. Local interaction, static-output, and asset-size checks are not substitutes for field measurements.
